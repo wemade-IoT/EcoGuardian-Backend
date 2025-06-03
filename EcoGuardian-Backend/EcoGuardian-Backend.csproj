@@ -17,8 +17,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Shared\Application\IOC\" />
-      <Folder Include="Shared\Infrastructure\Persistence\EFC\Configuration\Builders\" />
+      <Folder Include="OperationAndMonitoring\Application\Internal\OutboundServices\" />
+      <Folder Include="OperationAndMonitoring\Domain\Model\Queries\" />
     </ItemGroup>
 
 </Project>
