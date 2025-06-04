@@ -18,7 +18,6 @@
 
     <ItemGroup>
       <Folder Include="OperationAndMonitoring\Application\Internal\OutboundServices\" />
-      <Folder Include="OperationAndMonitoring\Domain\Model\Queries\" />
     </ItemGroup>
 
 </Project>

@@ -9,15 +9,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a72a4e0-424f-4476-8043-9881ea6e801d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Domain/Model/Commands/UpdatePlantCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Interfaces/REST/Resources/UpdatePlantResource.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Interfaces/REST/Transform/UpdatePlantCommandFromResourceAssembler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Application/Internal/QueryServices/PlantQueryService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Domain/Model/Queries/GetPlantsByUserIdQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Domain/Services/IPlantQueryService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Interfaces/REST/Resources/PlantResource.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Interfaces/REST/Transform/PlantResourceFromEntityAssembler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.EcoGuardian-Backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EcoGuardian-Backend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/EcoGuardian-Backend.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/EcoGuardian-Backend.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Application/Internal/CommandServices/PlantCommandService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Application/Internal/CommandServices/PlantCommandService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Domain/Model/Aggregates/Plant.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Domain/Model/Aggregates/Plant.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Domain/Model/Commands/DeletePlantCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Domain/Model/Commands/DeletePlantCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Domain/Repositories/IPlantRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Domain/Repositories/IPlantRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Domain/Services/IPlantCommandService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Domain/Services/IPlantCommandService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Interfaces/REST/Resources/CreatePlantResource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Interfaces/REST/Resources/CreatePlantResource.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Infrastructure/Persistence/EFC/Repositories/PlantRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Infrastructure/Persistence/EFC/Repositories/PlantRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Interfaces/REST/PlantController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Interfaces/REST/PlantController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Interfaces/REST/Transform/DeletePlantCommandFromResourceAssembler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Interfaces/REST/Transform/DeletePlantCommandFromResourceAssembler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/Shared/Application/IOC/ApplicationDependencyContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/Shared/Application/IOC/ApplicationDependencyContainer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/bin/Debug/net8.0/EcoGuardian-Backend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/bin/Debug/net8.0/EcoGuardian-Backend.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/bin/Debug/net8.0/EcoGuardian-Backend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/bin/Debug/net8.0/EcoGuardian-Backend.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/EcoGuardian-Backend.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/EcoGuardian-Backend.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/EcoGuardian-Backend.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/EcoGuardian-Backend.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/EcoGuardian-Backend.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/EcoGuardian-Backend.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/EcoGuardian-Backend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/EcoGuardian-Backend.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/EcoGuardian-Backend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/EcoGuardian-Backend.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/EcoGuardian-Backend.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/EcoGuardian-Backend.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/ref/EcoGuardian-Backend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/ref/EcoGuardian-Backend.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/refint/EcoGuardian-Backend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/refint/EcoGuardian-Backend.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,20 +67,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.EcoGuardian-Backend: http.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/edit-plant&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.EcoGuardian-Backend: http.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "feature/get-plants-by-user",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.EcoGuardian-Backend: http">
     <configuration name="EcoGuardian-Backend: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/EcoGuardian-Backend/EcoGuardian-Backend.csproj" />
@@ -107,7 +123,7 @@
       <updated>1748923005237</updated>
       <workItem from="1748923006582" duration="2909000" />
       <workItem from="1748991727806" duration="1913000" />
-      <workItem from="1749060352431" duration="575000" />
+      <workItem from="1749060352431" duration="1532000" />
     </task>
     <servers />
   </component>

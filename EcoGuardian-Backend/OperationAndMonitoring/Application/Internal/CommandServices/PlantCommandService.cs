@@ -28,4 +28,16 @@ public class PlantCommandService(IPlantRepository plantRepository, IUnitOfWork u
         plantRepository.Update(plant);
         await unitOfWork.CompleteAsync();
     }
+
+    public async Task Handle(DeletePlantCommand command)
+    {
+        var plant = await plantRepository.GetByIdAsync(command.Id);
+        if (plant == null)
+        {
+            throw new BadHttpRequestException($"Plant with ID {command.Id} not found.");
+        }
+
+        plantRepository.DeleteAsync(plant);
+        await unitOfWork.CompleteAsync();
+    }
 }

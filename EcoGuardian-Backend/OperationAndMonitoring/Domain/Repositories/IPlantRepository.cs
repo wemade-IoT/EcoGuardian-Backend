@@ -5,5 +5,5 @@ namespace EcoGuardian_Backend.OperationAndMonitoring.Domain.Repositories;
 
 public interface IPlantRepository : IBaseRepository<Plant>
 {
-    
+    Task<IEnumerable<Plant>> GetPlantsByUserIdAsync(int userId);
 }
