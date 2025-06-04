@@ -8,7 +8,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a72a4e0-424f-4476-8043-9881ea6e801d" name="Changes" comment="" />
+    <list default="true" id="0a72a4e0-424f-4476-8043-9881ea6e801d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Domain/Model/Commands/UpdatePlantCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Interfaces/REST/Resources/UpdatePlantResource.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Interfaces/REST/Transform/UpdatePlantCommandFromResourceAssembler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Application/Internal/CommandServices/PlantCommandService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Application/Internal/CommandServices/PlantCommandService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Domain/Model/Aggregates/Plant.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Domain/Model/Aggregates/Plant.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Domain/Services/IPlantCommandService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Domain/Services/IPlantCommandService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Interfaces/REST/Resources/CreatePlantResource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/OperationAndMonitoring/Interfaces/REST/Resources/CreatePlantResource.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/EcoGuardian-Backend.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/EcoGuardian-Backend.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/EcoGuardian-Backend.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/EcoGuardian-Backend.AssemblyInfoInputs.cache" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,7 +55,8 @@
   &quot;keyToString&quot;: {
     &quot;.NET Launch Settings Profile.EcoGuardian-Backend: http.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/edit-plant&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -95,6 +106,8 @@
       <option name="presentableId" value="Default" />
       <updated>1748923005237</updated>
       <workItem from="1748923006582" duration="2909000" />
+      <workItem from="1748991727806" duration="1913000" />
+      <workItem from="1749060352431" duration="575000" />
     </task>
     <servers />
   </component>

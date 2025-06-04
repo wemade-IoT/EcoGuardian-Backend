@@ -44,5 +44,19 @@ public class Plant
         IsPlantation = command.IsPlantation;
         WellnessStateId = command.WellnessStateId;
     }
+
+    public void Update(UpdatePlantCommand command)
+    { 
+        Type = command.Type;
+        AreaCoverage = command.AreaCoverage;
+        UserId = command.UserId;
+        WaterThreshold = command.WaterThreshold;
+        LightThreshold = command.LightThreshold;
+        TemperatureThreshold = command.TemperatureThreshold;
+        UpdatedAt = DateTimeConverterHelper.ToNormalizeFormat(DateTime.UtcNow);
+        IsPlantation = command.IsPlantation;
+        WellnessStateId = command.WellnessStateId;
+        
+    }
     
 }

@@ -15,4 +15,17 @@ public class PlantCommandService(IPlantRepository plantRepository, IUnitOfWork u
         await unitOfWork.CompleteAsync();
 
     }
+
+    public async Task Handle(UpdatePlantCommand command)
+    {
+        var plant = await plantRepository.GetByIdAsync(command.Id);
+        if (plant == null)
+        {
+            throw new BadHttpRequestException($"Plant with ID {command.Id} not found.");
+        }
+
+        plant.Update(command);
+        plantRepository.Update(plant);
+        await unitOfWork.CompleteAsync();
+    }
 }

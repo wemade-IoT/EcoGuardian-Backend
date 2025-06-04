@@ -21,4 +21,13 @@ public class PlantController(IPlantCommandService plantCommandService) : Control
         await plantCommandService.Handle(command);
         return StatusCode(201,true);
     }
+    
+    [HttpPut("{id:int}")]
+    [ProducesResponseType(200)]
+    public async Task<IActionResult> UpdatePlant([FromBody] UpdatePlantResource resource, [FromRoute] int id)
+    {
+        var command = UpdatePlantCommandFromResourceAssembler.ToCommandFromResource(id,resource);
+        await plantCommandService.Handle(command);
+        return Ok(true);
+    }
 }
