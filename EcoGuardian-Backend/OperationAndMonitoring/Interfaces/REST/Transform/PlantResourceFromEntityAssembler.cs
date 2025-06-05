@@ -10,6 +10,7 @@ public class PlantResourceFromEntityAssembler
         return new PlantResource
         {
             Id = plant.Id,
+            Name = plant.Name,
             Type = plant.Type,
             AreaCoverage = plant.AreaCoverage,
             UserId = plant.UserId,

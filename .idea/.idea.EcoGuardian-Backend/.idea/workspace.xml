@@ -67,7 +67,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Docker.compose.yaml.ecoguardian-backend: Compose Deployment">
+  <component name="RunManager" selected="Docker.compose.yaml: Compose Deployment">
     <configuration name="EcoGuardian-Backend: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/EcoGuardian-Backend/EcoGuardian-Backend.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
