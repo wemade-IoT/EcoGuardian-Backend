@@ -14,7 +14,17 @@ builder.Services.AddInfrastructureDependencies(builder, configuration);
 builder.Services.AddApplicationDependencies();
 builder.Services.AddInterfaceDependencies(builder, configuration);
 
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(9080); 
+});
+
+
 var app = builder.Build();
+
+
+
+
 
 using (var scope = app.Services.CreateScope())
 {
