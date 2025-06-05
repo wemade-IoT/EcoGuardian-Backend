@@ -2,6 +2,7 @@ namespace EcoGuardian_Backend.OperationAndMonitoring.Domain.Model.Commands;
 
 public record UpdatePlantCommand(
       int Id,
+      string Name,
       string Type,
       int AreaCoverage,
       int UserId,

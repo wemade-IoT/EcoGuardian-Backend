@@ -8,6 +8,7 @@ public class CreatePlantCommandFromResourceAssembler
     public static CreatePlantCommand ToCommandFromResource(CreatePlantResource resource)
     {
         return new CreatePlantCommand(
+            resource.Name,
             resource.Type,
             resource.AreaCoverage,
             resource.UserId,

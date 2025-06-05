@@ -9,6 +9,7 @@ public class UpdatePlantCommandFromResourceAssembler
     {
         return new UpdatePlantCommand(
             id,
+            resource.Name,
             resource.Type,
             resource.AreaCoverage,
             resource.UserId,

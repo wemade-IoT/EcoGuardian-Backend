@@ -6,6 +6,8 @@ namespace EcoGuardian_Backend.OperationAndMonitoring.Domain.Model.Aggregates;
 public class Plant
 {
     public int Id { get; }
+    
+    public string Name { get; private set; }
     public string Type { get; private set; }
     public int AreaCoverage { get; private set; }
     public int UserId { get; private set; }
@@ -19,6 +21,7 @@ public class Plant
 
     public Plant()
     {
+         Name = string.Empty;
         Type = string.Empty;
         AreaCoverage = 0;
         UserId = 0;
@@ -34,6 +37,7 @@ public class Plant
     public Plant(CreatePlantCommand command)
     {
         Type = command.Type;
+        Name = command.Name;
         AreaCoverage = command.AreaCoverage;
         UserId = command.UserId;
         WaterThreshold = command.WaterThreshold;
@@ -48,6 +52,7 @@ public class Plant
     public void Update(UpdatePlantCommand command)
     { 
         Type = command.Type;
+        Name = command.Name;
         AreaCoverage = command.AreaCoverage;
         UserId = command.UserId;
         WaterThreshold = command.WaterThreshold;

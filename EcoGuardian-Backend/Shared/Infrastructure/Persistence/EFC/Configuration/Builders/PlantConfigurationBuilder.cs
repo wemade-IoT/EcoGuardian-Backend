@@ -24,6 +24,8 @@ public class PlantConfigurationBuilder : IEntityTypeConfiguration<Plant>
             .IsRequired();
         builder.Property(x => x.Type)
             .IsRequired();
+        builder.Property( x=> x.Name)
+            .IsRequired();
         builder.Property(x => x.UserId)
             .IsRequired();
         builder.Property(x => x.CreatedAt);

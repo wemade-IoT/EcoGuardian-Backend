@@ -1,6 +1,7 @@
 namespace EcoGuardian_Backend.OperationAndMonitoring.Domain.Model.Commands;
 
 public record CreatePlantCommand(
+    string Name,
     string Type,
     int AreaCoverage,
     int UserId,

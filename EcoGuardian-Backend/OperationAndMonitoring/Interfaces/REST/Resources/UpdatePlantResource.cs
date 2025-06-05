@@ -1,6 +1,7 @@
 namespace EcoGuardian_Backend.OperationAndMonitoring.Interfaces.REST.Resources;
 
 public record UpdatePlantResource( 
+    string Name,    
     string Type,
     int AreaCoverage,
     int UserId,

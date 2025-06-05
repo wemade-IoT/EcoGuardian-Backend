@@ -54,6 +54,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;.NET Launch Settings Profile.EcoGuardian-Backend: http.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.compose.yaml.ecoguardian-backend: Compose Deployment.executor&quot;: &quot;Run&quot;,
     &quot;Docker.compose.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
@@ -173,6 +174,7 @@
       <workItem from="1748991727806" duration="1913000" />
       <workItem from="1749060352431" duration="1532000" />
       <workItem from="1749134113318" duration="1308000" />
+      <workItem from="1749138172540" duration="182000" />
     </task>
     <task id="LOCAL-00001" summary="chore: configured gitignore">
       <option name="closed" value="true" />

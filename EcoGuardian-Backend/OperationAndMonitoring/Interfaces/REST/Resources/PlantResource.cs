@@ -3,6 +3,7 @@ namespace EcoGuardian_Backend.OperationAndMonitoring.Interfaces.REST.Resources;
 public record PlantResource
 {
     public int Id { get; set; }
+    public string Name { get; set; }
     public string Type { get;  set; }
     public int AreaCoverage { get; set; }
     public int UserId { get; set; }
