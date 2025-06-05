@@ -8,26 +8,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a72a4e0-424f-4476-8043-9881ea6e801d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/EcoGuardian-Backend/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.EcoGuardian-Backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EcoGuardian-Backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend.sln" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/EcoGuardian-Backend.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/EcoGuardian-Backend.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/bin/Debug/net8.0/EcoGuardian-Backend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/bin/Debug/net8.0/EcoGuardian-Backend.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/bin/Debug/net8.0/EcoGuardian-Backend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/bin/Debug/net8.0/EcoGuardian-Backend.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/bin/Debug/net8.0/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/bin/Debug/net8.0/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/EcoGuardian-Backend.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/EcoGuardian-Backend.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/EcoGuardian-Backend.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/EcoGuardian-Backend.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/EcoGuardian-Backend.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/EcoGuardian-Backend.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/EcoGuardian-Backend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/EcoGuardian-Backend.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/EcoGuardian-Backend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/EcoGuardian-Backend.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/EcoGuardian-Backend.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/EcoGuardian-Backend.sourcelink.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/ref/EcoGuardian-Backend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/ref/EcoGuardian-Backend.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/refint/EcoGuardian-Backend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/EcoGuardian-Backend/obj/Debug/net8.0/refint/EcoGuardian-Backend.dll" afterDir="false" />
-    </list>
+    <list default="true" id="0a72a4e0-424f-4476-8043-9881ea6e801d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,13 +33,15 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Users/lordmathi2741/Documents/Cursos/IoT/EcoGuardian-Backend/EcoGuardian-Backend/Shared/Infrastructure/Persistence/EFC/Configuration/AppDbContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/lordmathi2741/Documents/Cursos/IoT/EcoGuardian-Backend/EcoGuardian-Backend/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/lordmathi2741/Documents/Cursos/IoT/EcoGuardian-Backend/EcoGuardian-Backend/appsettings.Development.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/lordmathi2741/Documents/Cursos/IoT/EcoGuardian-Backend/EcoGuardian-Backend/bin/Debug/net8.0/appsettings.Development.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///Users/lordmathi2741/Documents/Cursos/IoT/EcoGuardian-Backend/EcoGuardian-Backend/obj/Debug/net8.0/EcoGuardian-Backend.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -68,22 +51,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.EcoGuardian-Backend: http.executor": "Run",
-    "Docker.compose.yaml: Compose Deployment.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "develop",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.EcoGuardian-Backend: http.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.compose.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Docker.compose.yaml: Compose Deployment">
+}</component>
+  <component name="RunManager" selected="Docker.compose.yaml.ecoguardian-backend: Compose Deployment">
     <configuration name="EcoGuardian-Backend: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/EcoGuardian-Backend/EcoGuardian-Backend.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
@@ -136,11 +119,17 @@
       <method v="2" />
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
-      <deployment type="docker-compose.yml" />
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
       <method v="2" />
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
-      <deployment type="dockerfile" />
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
+      <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
       <method v="2" />
     </configuration>
     <configuration name="compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
@@ -152,6 +141,25 @@
       <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
       <method v="2" />
     </configuration>
+    <configuration name="compose.yaml.ecoguardian-backend: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="ecoguardian-backend" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="compose.yaml" />
+        </settings>
+      </deployment>
+      <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.compose.yaml.ecoguardian-backend: Compose Deployment" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -164,7 +172,7 @@
       <workItem from="1748923006582" duration="2909000" />
       <workItem from="1748991727806" duration="1913000" />
       <workItem from="1749060352431" duration="1532000" />
-      <workItem from="1749134113318" duration="784000" />
+      <workItem from="1749134113318" duration="1308000" />
     </task>
     <task id="LOCAL-00001" summary="chore: configured gitignore">
       <option name="closed" value="true" />
@@ -182,7 +190,23 @@
       <option name="project" value="LOCAL" />
       <updated>1749067338764</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="chore: configured docker container for development">
+      <option name="closed" value="true" />
+      <created>1749135002254</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1749135002254</updated>
+    </task>
+    <task id="LOCAL-00004" summary="chore: added coker compose configuration">
+      <option name="closed" value="true" />
+      <created>1749135092979</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1749135092979</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -194,6 +218,8 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="chore: configured gitignore" />
     <MESSAGE value="chore: complete merge to feature/register-plant" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore: complete merge to feature/register-plant" />
+    <MESSAGE value="chore: configured docker container for development" />
+    <MESSAGE value="chore: added coker compose configuration" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: added coker compose configuration" />
   </component>
 </project>
