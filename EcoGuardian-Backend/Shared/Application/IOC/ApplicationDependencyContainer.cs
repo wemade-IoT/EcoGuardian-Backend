@@ -1,3 +1,7 @@
+using EcoGuardian_Backend.CRM.Application.Internal.CommandServices;
+using EcoGuardian_Backend.CRM.Application.Internal.EventHandlers;
+using EcoGuardian_Backend.CRM.Application.Internal.QueryServices;
+using EcoGuardian_Backend.CRM.Domain.Services;
 using EcoGuardian_Backend.OperationAndMonitoring.Application.Internal.CommandServices;
 using EcoGuardian_Backend.OperationAndMonitoring.Application.Internal.QueryServices;
 using EcoGuardian_Backend.OperationAndMonitoring.Domain.Services;
@@ -15,7 +19,16 @@ public static class ApplicationDependencyContainer
         services.AddScoped<IPlantCommandService, PlantCommandService>();
         services.AddScoped<IPlantQueryService, PlantQueryService>();
         services.AddScoped<IWellnessStateCommandService, WellnessCommandService>();
-        
+        services.AddScoped<IQuestionCommandService, QuestionCommandService>();
+        services.AddScoped<IAnswerCommandService, AnswerCommandService>();
+        services.AddScoped<IAnswerQueryService, AnswerQueryService>();
+        services.AddScoped<IQuestionQueryService, QuestionQueryService>();
+
+
+
+
+        // EventHandler
+        services.AddScoped<IAddedQuestionEventHandler, AddedQuestionEventHandler>();
 
         // Register other application services as needed
 
