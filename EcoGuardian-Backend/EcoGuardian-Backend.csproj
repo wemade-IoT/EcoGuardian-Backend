@@ -18,7 +18,6 @@
 
     <ItemGroup>
       <Folder Include="Planning\Application\" />
-      <Folder Include="Planning\Infrastructure\" />
       <Folder Include="Planning\Interfaces\" />
       <Folder Include="Shared\Application\IOC\" />
     </ItemGroup>
