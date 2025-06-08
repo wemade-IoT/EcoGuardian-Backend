@@ -17,8 +17,12 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Planning\Application\" />
+      <Folder Include="Planning\Domain\Repositories\" />
+      <Folder Include="Planning\Domain\Services\" />
+      <Folder Include="Planning\Infrastructure\" />
+      <Folder Include="Planning\Interfaces\" />
       <Folder Include="Shared\Application\IOC\" />
-      <Folder Include="Shared\Infrastructure\Persistence\EFC\Configuration\Builders\" />
     </ItemGroup>
 
 </Project>
