@@ -46,7 +46,7 @@ public class Order
         SensorId = command.SensorId;
         ActuatorId = command.ActuatorId;
         CompletedAt = DateTimeConverterHelper.ToNormalizeFormat(DateTime.UtcNow);
-        StateId = command.OrderStateId;
+        StateId = command.StateId;
         SubscriptionId = command.SubscriptionId;
     }
 }
