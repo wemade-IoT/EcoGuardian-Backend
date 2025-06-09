@@ -1,3 +1,4 @@
+using EcoGuardian_Backend.Planning.Domain.Model.Commands;
 using EcoGuardian_Backend.Planning.Domain.Model.Queries;
 using EcoGuardian_Backend.Planning.Domain.Services;
 using EcoGuardian_Backend.Planning.Interfaces.REST.Resources;
@@ -33,12 +34,29 @@ public class OrderController(IOrderCommandService orderCommandService, IOrderQue
     
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetOrdersByUserId([FromQuery] int userId)
+    public async Task<IActionResult> GetOrdersByConsumerId([FromQuery] int consumerId)
     {
-        var query = new GetOrdersByUserIdQuery(userId);
+        var query = new GetOrdersByConsumerIdQuery(consumerId);
         var orders = await orderQueryService.Handle(query);
         var resources = orders.Select(OrderResourceFromEntityAssembler.ToResourceFromEntity).ToList();
         return Ok(resources);
     }
-}
 
+    [HttpPut("{id:int}/complete-payment")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> CompletePayment(int id)
+    {
+        var command = new CompletePaymentOrderCommand(id);
+        await orderCommandService.Handle(command);
+        return Ok(true);
+    }
+
+    [HttpPut("{id:int}/complete-installation")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> CompleteInstallation(int id)
+    {
+        var command = new CompleteInstallationOrderCommand(id);
+        await orderCommandService.Handle(command);
+        return Ok(true);
+    }
+}
