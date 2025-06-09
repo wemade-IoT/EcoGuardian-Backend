@@ -17,8 +17,8 @@ public class UserCommandService(
     public async Task<(User user, string token)> Handle(SignInCommand command)
     {
         var user = await userRepository.FindByEmailAsync(command.Email);
-
-        if (user == null || !hashingService.VerifyPassword(command.Password, user.PasswordHash) ||
+        
+        if (user == null || !hashingService.VerifyPassword(command.Password, user.Password) ||
             !command.Email.Contains('@'))
             throw new Exception("Invalid email or password");
 
@@ -38,11 +38,9 @@ public class UserCommandService(
         if(!command.Email.Contains('@'))
             throw new Exception("Invalid email address");
 
-        if (userRepository.ExistsByUsername(command.Username))
-            throw new Exception($"Username {command.Username} is already taken");
-
         var hashedPassword = hashingService.HashPassword(command.Password);
-        var user = new User(command.Username, hashedPassword, command.Email);
+        var user = new User(command);
+        user.UpdatePassword(hashedPassword);
         try
         {
             await userRepository.AddAsync(user);
@@ -57,20 +55,21 @@ public class UserCommandService(
         return user;
     }
 
-    public async Task<User?> Handle(UpdateUsernameCommand command)
+    public async Task Handle(UpdateRoleCommand command)
     {
-        var userToUpdate = await userRepository.GetByIdAsync(command.Id);
-        if (userToUpdate == null)
+        var user = await userRepository.GetByIdAsync(command.UserId);
+        if (user == null)
             throw new Exception("User not found");
-        var userExists = userRepository.ExistsByUsername(command.Username);
-        if (userExists)
-        {
-            throw new Exception("This username already exists");
-        }
 
-        userToUpdate.UpdateUsername(command.Username);
-        await unitOfWork.CompleteAsync();
-        return userToUpdate;
+        user.UpdateRoleId(command.RoleId);
+        try
+        {
+            userRepository.Update(user);
+            await unitOfWork.CompleteAsync();
+        }
+        catch (Exception e)
+        {
+            throw new Exception($"An error occurred while updating user role: {e.Message}");
+        }
     }
-    
 }

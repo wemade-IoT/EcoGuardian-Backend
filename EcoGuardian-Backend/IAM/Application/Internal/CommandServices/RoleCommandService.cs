@@ -4,16 +4,17 @@ using EcoGuardian_Backend.IAM.Domain.Model.ValueObjects;
 using EcoGuardian_Backend.IAM.Domain.Respositories;
 using EcoGuardian_Backend.IAM.Domain.Services;
 using EcoGuardian_Backend.Shared.Domain.Repositories;
+using EcoGuardian_Backend.Shared.Interfaces.ASP.Configuration.Extensions;
 
 namespace EcoGuardian_Backend.IAM.Application.Internal.CommandServices;
 
-public class SeedUserRoleCommandService(IUserRoleRepository repository, IUnitOfWork unitOfWork) : ISeedUserRoleCommandService
+public class RoleCommandService(IUserRoleRepository repository, IUnitOfWork unitOfWork) : IRoleCommandService
 {
     public async Task Handle(SeedUserRolesCommand command)
     {
         foreach (EUserRoles role in Enum.GetValues(typeof(EUserRoles)))
         {
-            if (await repository.ExistsUserRole(role)) continue;
+            if (await repository.ExistsUserRole(role.GetDescription())) continue;
             var userRole = new UserRole(role.ToString());
             await repository.AddAsync(userRole);
         }

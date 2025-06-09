@@ -192,3 +192,9 @@
 /Users/tato/wemade-iot/EcoGuardian-Backend/EcoGuardian-Backend/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll
 /Users/tato/wemade-iot/EcoGuardian-Backend/EcoGuardian-Backend/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
 /Users/tato/wemade-iot/EcoGuardian-Backend/EcoGuardian-Backend/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
+/Users/lordmathi2741/Documents/Cursos/IoT/EcoGuardian-Backend/EcoGuardian-Backend/bin/Debug/net8.0/BCrypt.Net-Next.dll
+/Users/lordmathi2741/Documents/Cursos/IoT/EcoGuardian-Backend/EcoGuardian-Backend/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/lordmathi2741/Documents/Cursos/IoT/EcoGuardian-Backend/EcoGuardian-Backend/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/lordmathi2741/Documents/Cursos/IoT/EcoGuardian-Backend/EcoGuardian-Backend/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll
+/Users/lordmathi2741/Documents/Cursos/IoT/EcoGuardian-Backend/EcoGuardian-Backend/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
+/Users/lordmathi2741/Documents/Cursos/IoT/EcoGuardian-Backend/EcoGuardian-Backend/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll

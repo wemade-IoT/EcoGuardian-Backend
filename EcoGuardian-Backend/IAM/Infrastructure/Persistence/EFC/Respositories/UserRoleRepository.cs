@@ -9,8 +9,8 @@ namespace EcoGuardian_Backend.IAM.Infrastructure.Persistence.EFC.Respositories;
 
 public class UserRoleRepository(AppDbContext context) : BaseRepository<UserRole>(context), IUserRoleRepository
 {
-    public async Task<bool> ExistsUserRole(EUserRoles role)
+    public async Task<bool> ExistsUserRole(string role)
     {
-        return await context.Set<UserRole>().AnyAsync(userRole => userRole.Role == role.ToString());
+        return await context.Set<UserRole>().AnyAsync(userRole => userRole.Role == role);
     }
 }

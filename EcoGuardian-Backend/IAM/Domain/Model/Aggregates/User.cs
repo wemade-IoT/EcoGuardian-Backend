@@ -1,33 +1,44 @@
-using System.Text.Json.Serialization;
+using EcoGuardian_Backend.IAM.Domain.Model.Commands;
 
 namespace EcoGuardian_Backend.IAM.Domain.Model.Aggregates;
 
-public class User(string username, string passwordHash, string email)
+public class User
 {
-    public User(): this(string.Empty, string.Empty, string.Empty)
-    {
-    }
 
     public int Id { get; }
-    public string Username { get; private set; } = username;
 
-    public string Email { get; set; } = email;
-
-    public int RoleId { get; set; } = 2;
+    public string Email { get; private set; }
     
+    public string Password { get; private set; }
 
-    [JsonIgnore] public string PasswordHash { get; private set; } = passwordHash;
-    
-    public User UpdateUsername(string username)
+    public int RoleId { get; private set; }
+
+    public User()
     {
-        Username = username;
-        return this;
+        Email = string.Empty;
+        Password = string.Empty;
+        RoleId = 0;
+    }
+
+
+    public User(SignUpCommand command)
+    {
+        Email = command.Email;
+        Password = command.Password;
+        RoleId = command.RoleId;
+
     }
     
-    public User UpdatePasswordHash(string passwordHash)
+
+    public void UpdateRoleId(int roleId)
     {
-        PasswordHash = passwordHash;
-        return this;
+        RoleId = roleId;
     }
+
+    public void UpdatePassword(string password)
+    {
+        Password = password;
+    }
+    
     
 }

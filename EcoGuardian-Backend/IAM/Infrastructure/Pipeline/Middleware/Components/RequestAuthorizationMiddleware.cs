@@ -1,6 +1,5 @@
 using EcoGuardian_Backend.IAM.Application.Internal.OutboundServices;
-using EcoGuardian_Backend.IAM.Domain.Model.Queries;
-using EcoGuardian_Backend.IAM.Domain.Services;
+using EcoGuardian_Backend.IAM.Domain.Respositories;
 using EcoGuardian_Backend.IAM.Infrastructure.Pipeline.Middleware.Attributes;
 
 namespace EcoGuardian_Backend.IAM.Infrastructure.Pipeline.Middleware.Components;
@@ -15,7 +14,7 @@ public class RequestAuthorizationMiddleware(RequestDelegate next)
      */
     public async Task InvokeAsync(
         HttpContext context,
-        IUserQueryService userQueryService,
+        IUserRepository userRepository,
         ITokenService tokenService)
     {
         Console.WriteLine("Entering InvokeAsync");
@@ -51,13 +50,11 @@ public class RequestAuthorizationMiddleware(RequestDelegate next)
 
         // if token is invalid then throw exception
         if (userId == null) throw new Exception("Invalid token");
-
-        // get user by id
-        var getUserByIdQuery = new GetUserByIdQuery(userId.Value);
+        
 
         // set user in HttpContext.Items["User"]
 
-        var user = await userQueryService.Handle(getUserByIdQuery);
+        var user = await userRepository.GetByIdAsync(userId.Value);
         Console.WriteLine("Successful authorization. Updating Context...");
         context.Items["User"] = user;
         Console.WriteLine("Continuing with Middleware Pipeline");

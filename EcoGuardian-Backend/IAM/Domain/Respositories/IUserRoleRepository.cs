@@ -6,5 +6,5 @@ namespace EcoGuardian_Backend.IAM.Domain.Respositories;
 
 public interface IUserRoleRepository : IBaseRepository<UserRole>
 {
-    Task<bool> ExistsUserRole(EUserRoles role);
+    Task<bool> ExistsUserRole(string role);
 }

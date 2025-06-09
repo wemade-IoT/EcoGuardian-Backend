@@ -2,6 +2,8 @@ using System.Security.Claims;
 using System.Text;
 using EcoGuardian_Backend.IAM.Application.Internal.OutboundServices;
 using EcoGuardian_Backend.IAM.Domain.Model.Aggregates;
+using EcoGuardian_Backend.IAM.Domain.Model.Entities;
+using EcoGuardian_Backend.IAM.Domain.Model.ValueObjects;
 using EcoGuardian_Backend.IAM.Infrastructure.Tokens.JWT.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -29,7 +31,8 @@ public class TokenService(IOptions<TokenSettings> tokenSettings) : ITokenService
             Subject = new ClaimsIdentity(new[]
             {
                 new Claim(ClaimTypes.Sid, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.Username)
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.Role, user.RoleId.ToString()),
             }),
             Expires = DateTime.UtcNow.AddDays(7),
             SigningCredentials =

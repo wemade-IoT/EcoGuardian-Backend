@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/tato/wemade-iot/EcoGuardian-Backend/EcoGuardian-Backend/EcoGuardian-Backend.csproj": {}
+    "/Users/lordmathi2741/Documents/Cursos/IoT/EcoGuardian-Backend/EcoGuardian-Backend/EcoGuardian-Backend.csproj": {}
   },
   "projects": {
-    "/Users/tato/wemade-iot/EcoGuardian-Backend/EcoGuardian-Backend/EcoGuardian-Backend.csproj": {
+    "/Users/lordmathi2741/Documents/Cursos/IoT/EcoGuardian-Backend/EcoGuardian-Backend/EcoGuardian-Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/tato/wemade-iot/EcoGuardian-Backend/EcoGuardian-Backend/EcoGuardian-Backend.csproj",
+        "projectUniqueName": "/Users/lordmathi2741/Documents/Cursos/IoT/EcoGuardian-Backend/EcoGuardian-Backend/EcoGuardian-Backend.csproj",
         "projectName": "EcoGuardian-Backend",
-        "projectPath": "/Users/tato/wemade-iot/EcoGuardian-Backend/EcoGuardian-Backend/EcoGuardian-Backend.csproj",
-        "packagesPath": "/Users/tato/.nuget/packages/",
-        "outputPath": "/Users/tato/wemade-iot/EcoGuardian-Backend/EcoGuardian-Backend/obj/",
+        "projectPath": "/Users/lordmathi2741/Documents/Cursos/IoT/EcoGuardian-Backend/EcoGuardian-Backend/EcoGuardian-Backend.csproj",
+        "packagesPath": "/Users/lordmathi2741/.nuget/packages/",
+        "outputPath": "/Users/lordmathi2741/Documents/Cursos/IoT/EcoGuardian-Backend/EcoGuardian-Backend/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/tato/.nuget/NuGet/NuGet.Config"
+          "/Users/lordmathi2741/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"

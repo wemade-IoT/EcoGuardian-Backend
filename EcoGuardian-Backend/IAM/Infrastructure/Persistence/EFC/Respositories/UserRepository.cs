@@ -28,22 +28,6 @@ public class UserRepository (AppDbContext context) : BaseRepository<User>(contex
         return await context.Set<User>().FirstOrDefaultAsync(user => user.Email == email);
     }
     
-    /**
-     * <summary>
-     *     Check if a user exists by username
-     * </summary>
-     * <param name="username">The username to search</param>
-     * <returns>True if the user exists, false otherwise</returns>
-     */
-    public bool ExistsByUsername(string username)
-    {
-        return context.Set<User>().Any(user => user.Username.Equals(username));
-    }
-
-    public async Task<string?> GetUsernameByIdAsync(int userId)
-    {
-        return await context.Set<User>().Where(user => user.Id == userId).Select(user => user.Username).FirstOrDefaultAsync();
-    }
 
     public bool ExistsById(int userId)
     {
