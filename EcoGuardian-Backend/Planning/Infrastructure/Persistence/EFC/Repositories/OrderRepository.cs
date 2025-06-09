@@ -11,6 +11,7 @@ public class OrderRepository(AppDbContext context) : BaseRepository<Order>(conte
     public async Task<IEnumerable<Order>> GetOrdersByConsumerIdAsync(int consumerId)
     {
         return await context.Set<Order>()
+            .Include(x => x.OrderDetails)
             .Where(x => x.ConsumerId == consumerId)
             .ToListAsync();
     }

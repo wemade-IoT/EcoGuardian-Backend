@@ -21,5 +21,9 @@ public class OrderConfigurationBuilder : IEntityTypeConfiguration<Order>
         builder.Property(x => x.SpecialistId);
         builder.Property(x => x.InstallationDate);
         builder.HasOne<OrderState>().WithMany().HasForeignKey(x => x.StateId);
+        builder.HasMany(o => o.OrderDetails)
+            .WithOne()
+            .HasForeignKey(od => od.OrderId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

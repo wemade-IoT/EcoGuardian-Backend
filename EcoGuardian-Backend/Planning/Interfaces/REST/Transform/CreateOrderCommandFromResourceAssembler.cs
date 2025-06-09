@@ -7,10 +7,17 @@ public class CreateOrderCommandFromResourceAssembler
 {
     public static CreateOrderCommand ToCommandFromResource(CreateOrderResource resource)
     {
+        var details = resource.Details?.Select(d => new CreateOrderDetailCommand(
+            d.DeviceId,
+            d.Quantity,
+            d.UnitPrice,
+            d.Description
+        )).ToList() ?? new List<CreateOrderDetailCommand>();
         return new CreateOrderCommand(
             resource.Action,
             resource.ConsumerId,
-            resource.InstallationDate
+            resource.InstallationDate,
+            details
         );
     }
 }

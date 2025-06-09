@@ -10,4 +10,6 @@ public record OrderResource
     public int ConsumerId { get; set; }
     public int? SpecialistId { get; set; }
     public DateTime? InstallationDate { get; set; }
+    public List<OrderDetailResource> Details { get; set; }
+    
 };

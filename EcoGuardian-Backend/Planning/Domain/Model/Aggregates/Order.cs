@@ -1,4 +1,5 @@
 ﻿using EcoGuardian_Backend.Planning.Domain.Model.Commands;
+using EcoGuardian_Backend.Planning.Domain.Model.Entities;
 using EcoGuardian_Backend.Shared.Interfaces.Helpers;
 
 namespace EcoGuardian_Backend.Planning.Domain.Model.Aggregates;
@@ -13,6 +14,7 @@ public class Order
     public int ConsumerId { get; private set; }
     public int? SpecialistId { get; private set; }
     public DateTime? InstallationDate { get; private set; }
+    public ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
 
     public Order()
     {
@@ -34,8 +36,15 @@ public class Order
         ConsumerId = command.ConsumerId;
         SpecialistId = null;
         InstallationDate = command.InstallationDate;
+        OrderDetails = command.Details?.Select(d => new OrderDetail {
+            DeviceId = d.DeviceId,
+            Quantity = d.Quantity,
+            UnitPrice = d.UnitPrice,
+            Description = d.Description,
+            OrderId = Id
+        }).ToList() ?? new List<OrderDetail>();
     }
-    
+
     public void Update(UpdateOrderCommand command)
     {
         Action = command.Action;

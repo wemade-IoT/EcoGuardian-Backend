@@ -3,5 +3,6 @@
 public record CreateOrderCommand(
     string Action,
     int ConsumerId,
-    DateTime? InstallationDate
+    DateTime? InstallationDate,
+    List<CreateOrderDetailCommand> Details
 );
