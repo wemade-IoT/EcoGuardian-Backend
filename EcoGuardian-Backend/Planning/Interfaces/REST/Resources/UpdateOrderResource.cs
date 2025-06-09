@@ -2,9 +2,8 @@
 
 public record UpdateOrderResource(
     string Action,
-    int UserId,
-    int SensorId,
-    int ActuatorId,
     int StateId,
-    int SubscriptionId
-    );
+    int ConsumerId,
+    int? SpecialistId,
+    DateTime? InstallationDate
+);

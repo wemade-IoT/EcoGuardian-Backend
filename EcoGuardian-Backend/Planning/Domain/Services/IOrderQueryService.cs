@@ -5,5 +5,5 @@ namespace EcoGuardian_Backend.Planning.Domain.Services;
 
 public interface IOrderQueryService
 {
-    Task<IEnumerable<Order>> Handle(GetOrdersByUserIdQuery query);
+    Task<IEnumerable<Order>> Handle(GetOrdersByConsumerIdQuery query);
 }

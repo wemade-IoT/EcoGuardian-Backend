@@ -7,8 +7,8 @@ namespace EcoGuardian_Backend.Planning.Application.Internal.QueryServices;
 
 public class OrderQueryService(IOrderRepository repository) : IOrderQueryService
 {
-    public Task<IEnumerable<Order>> Handle(GetOrdersByUserIdQuery query)
+    public Task<IEnumerable<Order>> Handle(GetOrdersByConsumerIdQuery query)
     {
-        return repository.GetOrdersByUserIdAsync(query.UserId);
+        return repository.GetOrdersByConsumerIdAsync(query.ConsumerId);
     }
 }

@@ -8,10 +8,10 @@ namespace EcoGuardian_Backend.Planning.Infrastructure.Persistence.EFC.Repositori
 
 public class OrderRepository(AppDbContext context) : BaseRepository<Order>(context), IOrderRepository
 {
-    public async Task<IEnumerable<Order>> GetOrdersByUserIdAsync(int userId)
+    public async Task<IEnumerable<Order>> GetOrdersByConsumerIdAsync(int consumerId)
     {
         return await context.Set<Order>()
-            .Where(x => x.UserId == userId)
+            .Where(x => x.ConsumerId == consumerId)
             .ToListAsync();
     }
 }

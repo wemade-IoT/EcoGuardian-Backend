@@ -2,9 +2,6 @@
 
 public record CreateOrderResource(
     string Action,
-    int UserId,
-    int SensorId,
-    int ActuatorId,
-    int StateId,
-    int SubscriptionId
-    );
+    int ConsumerId,
+    DateTime? InstallationDate
+);

@@ -9,11 +9,8 @@ public class CreateOrderCommandFromResourceAssembler
     {
         return new CreateOrderCommand(
             resource.Action,
-            resource.UserId,
-            resource.SensorId,
-            resource.ActuatorId,
-            resource.StateId,
-            resource.SubscriptionId
+            resource.ConsumerId,
+            resource.InstallationDate
         );
     }
 }

@@ -10,11 +10,10 @@ public class UpdateOrderCommandFromResourceAssembler
         return new UpdateOrderCommand(
             id,
             resource.Action,
-            resource.UserId,
-            resource.SensorId,
-            resource.ActuatorId,
             resource.StateId,
-            resource.SubscriptionId
-            );
+            resource.ConsumerId,
+            resource.SpecialistId,
+            resource.InstallationDate
+        );
     }
 }

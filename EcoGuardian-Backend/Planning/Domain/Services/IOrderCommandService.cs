@@ -6,4 +6,6 @@ public interface IOrderCommandService
 {
     Task Handle(CreateOrderCommand command);
     Task Handle(UpdateOrderCommand command);
+    Task Handle(CompletePaymentOrderCommand command);
+    Task Handle(CompleteInstallationOrderCommand command);
 }

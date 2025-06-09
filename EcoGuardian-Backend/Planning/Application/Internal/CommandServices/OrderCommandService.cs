@@ -27,4 +27,24 @@ public class OrderCommandService(IOrderRepository orderRepository, IUnitOfWork u
         orderRepository.Update(order);
         await unitOfWork.CompleteAsync();
     }
+
+    public async Task Handle(CompletePaymentOrderCommand command)
+    {
+        var order = await orderRepository.GetByIdAsync(command.OrderId);
+        if (order == null)
+            throw new KeyNotFoundException($"Order with ID {command.OrderId} not found.");
+        order.CompletePayment();
+        orderRepository.Update(order);
+        await unitOfWork.CompleteAsync();
+    }
+
+    public async Task Handle(CompleteInstallationOrderCommand command)
+    {
+        var order = await orderRepository.GetByIdAsync(command.OrderId);
+        if (order == null)
+            throw new KeyNotFoundException($"Order with ID {command.OrderId} not found.");
+        order.CompleteInstallation();
+        orderRepository.Update(order);
+        await unitOfWork.CompleteAsync();
+    }
 }

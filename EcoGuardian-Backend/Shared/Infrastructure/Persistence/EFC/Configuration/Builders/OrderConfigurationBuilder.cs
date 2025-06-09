@@ -14,14 +14,12 @@ public class OrderConfigurationBuilder : IEntityTypeConfiguration<Order>
             .ValueGeneratedOnAdd();
         builder.Property(x => x.Action)
             .IsRequired();
-        builder.Property(x => x.UserId)
-            .IsRequired();
-        builder.Property(x => x.SensorId)
-            .IsRequired();
-        builder.Property(x => x.ActuatorId)
-            .IsRequired();
         builder.Property(x => x.CreatedAt);
         builder.Property(x => x.CompletedAt);
+        builder.Property(x => x.ConsumerId)
+            .IsRequired();
+        builder.Property(x => x.SpecialistId);
+        builder.Property(x => x.InstallationDate);
         builder.HasOne<OrderState>().WithMany().HasForeignKey(x => x.StateId);
     }
 }
