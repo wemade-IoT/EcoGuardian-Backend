@@ -31,3 +31,14 @@ public class Profile
         AvatarUrl = string.Empty;
     }
 
+    public Profile(CreateProfileCommand command)
+    {
+        this.Name = command.Name;
+        this.UserName = command.UserName;
+        this.Email = command.Email;
+        this.Address = command.Address;
+        this.UserId = command.UserId;
+        this.SubscriptionId = command.SubscriptionId;
+        this.AvatarUrl = command.AvatarUrl;
+    }
+
