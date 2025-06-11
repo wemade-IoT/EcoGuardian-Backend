@@ -32,7 +32,7 @@ public class TokenService(IOptions<TokenSettings> tokenSettings) : ITokenService
             {
                 new Claim(ClaimTypes.Sid, user.Id.ToString()),
                 new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.Role, user.RoleId.ToString()),
+                new Claim(ClaimTypes.Role, Enum.GetName(typeof(EUserRoles), user.RoleId) ?? "Unknown"),
             }),
             Expires = DateTime.UtcNow.AddDays(7),
             SigningCredentials =

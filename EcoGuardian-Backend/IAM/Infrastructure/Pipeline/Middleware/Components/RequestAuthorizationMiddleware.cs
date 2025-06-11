@@ -43,13 +43,13 @@ public class RequestAuthorizationMiddleware(RequestDelegate next)
 
 
         // if token is null then throw exception
-        if (token == null) throw new Exception("Null or invalid token");
+        if (token == null) throw new UnauthorizedAccessException("Null or invalid token");
 
         // validate token
         var userId = await tokenService.ValidateToken(token);
 
         // if token is invalid then throw exception
-        if (userId == null) throw new Exception("Invalid token");
+        if (userId == null) throw new UnauthorizedAccessException("Invalid token");
         
 
         // set user in HttpContext.Items["User"]

@@ -9,12 +9,10 @@ using EcoGuardian_Backend.Shared.Application.Internal.EventHandler;
 var builder = WebApplication.CreateBuilder(args);
 
 var configuration = builder.Configuration;
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 builder.Services.AddInfrastructureDependencies(builder, configuration);
 builder.Services.AddApplicationDependencies();
-builder.Services.AddInterfaceDependencies(builder, configuration);
+builder.Services.AddInterfaceDependencies(builder);
 
 builder.WebHost.ConfigureKestrel(options =>
 {
