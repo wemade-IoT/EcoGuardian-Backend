@@ -42,3 +42,10 @@ public class Profile
         this.AvatarUrl = command.AvatarUrl;
     }
 
+    public void Update(UpdateProfileCommand command)
+    {
+        this.Name = command.Name;
+        this.Address = command.Address;
+        this.AvatarUrl = command.AvatarUrl;
+    }
+}
