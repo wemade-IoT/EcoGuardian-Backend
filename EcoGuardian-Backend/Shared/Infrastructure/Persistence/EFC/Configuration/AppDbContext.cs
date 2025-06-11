@@ -11,7 +11,8 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfiguration(new WellnessStateConfigurationBuilder());
         modelBuilder.ApplyConfiguration(new PlantConfigurationBuilder());
-       modelBuilder.UseSnakeCaseWithPluralizedTableNamingConvention();
+        modelBuilder.ApplyConfiguration(new ProfileConfigurationBuilder());
+        modelBuilder.UseSnakeCaseWithPluralizedTableNamingConvention();
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
