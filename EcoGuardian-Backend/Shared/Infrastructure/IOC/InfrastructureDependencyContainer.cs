@@ -1,6 +1,8 @@
 
 using EcoGuardian_Backend.OperationAndMonitoring.Domain.Repositories;
 using EcoGuardian_Backend.OperationAndMonitoring.Infrastructure.Persistence.EFC.Repositories;
+using EcoGuardian_Backend.ProfilePreferences.Domain.Repositories;
+using EcoGuardian_Backend.ProfilePreferences.Infrastructure.Persistence.EFC.Repositories;
 using EcoGuardian_Backend.Shared.Domain.Repositories;
 using EcoGuardian_Backend.Shared.Infrastructure.Persistence.EFC.Configuration;
 using EcoGuardian_Backend.Shared.Infrastructure.Persistence.EFC.Repositories;
@@ -15,6 +17,7 @@ public static class InfrastructureDependencyContainer
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IPlantRepository, PlantRepository>();
         services.AddScoped<IWellnessStateRepository, WellnessStateRepository>();
+        services.AddScoped<IProfileRepository, ProfileRepository>();
         services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 
         services.AddDbContext<AppDbContext>(db =>
