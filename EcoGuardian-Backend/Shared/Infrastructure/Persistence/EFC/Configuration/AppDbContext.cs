@@ -10,8 +10,12 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfiguration(new WellnessStateConfigurationBuilder());
+        modelBuilder.ApplyConfiguration(new SubscriptionStateConfigurationBuilder());
+        modelBuilder.ApplyConfiguration(new SubscriptionTypeConfigurationBuilder());
         modelBuilder.ApplyConfiguration(new PlantConfigurationBuilder());
-       modelBuilder.UseSnakeCaseWithPluralizedTableNamingConvention();
+        modelBuilder.ApplyConfiguration(new SubscriptionConfigurationBuilder());
+        modelBuilder.ApplyConfiguration(new PaymentConfigurationBuilder());
+        modelBuilder.UseSnakeCaseWithPluralizedTableNamingConvention();
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
