@@ -4,6 +4,6 @@ public record CreateOrderDetailCommand(
     int DeviceId,
     int Quantity,
     decimal UnitPrice,
-    string? Description
+    string? Description,
+    decimal? Area
 );
-

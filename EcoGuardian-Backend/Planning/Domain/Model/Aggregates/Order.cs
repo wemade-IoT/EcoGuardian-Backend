@@ -55,14 +55,8 @@ public class Order
         InstallationDate = command.InstallationDate;
     }
 
-    public void CompletePayment()
+    public void UpdateState(int newStateId)
     {
-        StateId = 2;
-    }
-
-    public void CompleteInstallation()
-    {
-        StateId = 3;
-        CompletedAt = DateTimeConverterHelper.ToNormalizeFormat(DateTime.UtcNow);
+        StateId = newStateId;
     }
 }

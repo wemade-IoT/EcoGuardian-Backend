@@ -11,7 +11,8 @@ public class CreateOrderCommandFromResourceAssembler
             d.DeviceId,
             d.Quantity,
             d.UnitPrice,
-            d.Description
+            d.Description,
+            d.Area
         )).ToList() ?? new List<CreateOrderDetailCommand>();
         return new CreateOrderCommand(
             resource.Action,

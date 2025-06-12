@@ -41,22 +41,4 @@ public class OrderController(IOrderCommandService orderCommandService, IOrderQue
         var resources = orders.Select(OrderResourceFromEntityAssembler.ToResourceFromEntity).ToList();
         return Ok(resources);
     }
-
-    [HttpPut("{id:int}/complete-payment")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<IActionResult> CompletePayment(int id)
-    {
-        var command = new CompletePaymentOrderCommand(id);
-        await orderCommandService.Handle(command);
-        return Ok(true);
-    }
-
-    [HttpPut("{id:int}/complete-installation")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<IActionResult> CompleteInstallation(int id)
-    {
-        var command = new CompleteInstallationOrderCommand(id);
-        await orderCommandService.Handle(command);
-        return Ok(true);
-    }
 }
