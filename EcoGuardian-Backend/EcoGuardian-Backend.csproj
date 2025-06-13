@@ -25,6 +25,56 @@
       <Content Include="..\.dockerignore">
         <Link>.dockerignore</Link>
       </Content>
+      <Content Include="obj\Debug\net8.0\EcoGuardian-Backend.sourcelink.json" />
+      <Content Include="obj\Debug\net8.0\staticwebassets.build.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="OperationAndMonitoring\Application\Internal\OutboundServices\IExternalUserService.cs" />
+      <Compile Remove="OperationAndMonitoring\Interfaces\ACL\IMonitorinContextFacade.cs" />
+      <Compile Remove="OperationAndMonitoring\Domain\Model\Queries\GetPlantByIdQuery.cs" />
+      <Compile Remove="Shared\Infrastructure\Persistence\EFC\Configuration\Builders\UserRoleConfigurationBuilder.cs" />
+      <Compile Remove="Shared\Infrastructure\Persistence\EFC\Configuration\Builders\UserConfigurationBuilder.cs" />
+      <Compile Remove="Shared\Interfaces\Filters\AuthorizeFilterAttribute.cs" />
+      <Compile Include="obj\Debug\net8.0\EcoGuardian-Backend.MvcApplicationPartsAssemblyInfo.cs" />
+      <Compile Remove="IAM\Infrastructure\Persistence\EFC\Respositories\UserRoleRepository.cs" />
+      <Compile Remove="IAM\Infrastructure\Pipeline\Middleware\Attributes\AllowAnonymousAttribute.cs" />
+      <Compile Remove="IAM\Application\Internal\CommandServices\UserCommandService.cs" />
+      <Compile Remove="IAM\Interfaces\REST\AuthenticationController.cs" />
+      <Compile Remove="IAM\Interfaces\REST\Transform\AuthenticatedUserResourceFromEntityAssembler.cs" />
+      <Compile Remove="IAM\Interfaces\REST\Transform\SignUpCommandFromResourceAssembler.cs" />
+      <Compile Remove="IAM\Interfaces\REST\Resources\SignUpResource.cs" />
+      <Compile Remove="IAM\Interfaces\ACL\IIamContextFacade.cs" />
+      <Compile Remove="IAM\Domain\Respositories\IUserRoleRepository.cs" />
+      <Compile Remove="IAM\Domain\Services\IUserCommandService.cs" />
+      <Compile Remove="IAM\Domain\Services\IRoleCommandService.cs" />
+      <Compile Remove="IAM\Domain\Model\Commands\SeedUserRolesCommand.cs" />
+      <Compile Remove="IAM\Domain\Model\Commands\UpdateRoleCommand.cs" />
+      <Compile Remove="IAM\Domain\Model\Commands\SignUpCommand.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="IAM\Application\Internal\CommandServices\" />
+      <Folder Include="IAM\Application\Internal\Events\" />
+      <Folder Include="IAM\Application\Internal\OutboundServices\" />
+      <Folder Include="IAM\Application\Internal\QueryServices\" />
+      <Folder Include="IAM\Domain\Model\Aggregates\" />
+      <Folder Include="IAM\Domain\Model\Commands\" />
+      <Folder Include="IAM\Domain\Model\Entities\" />
+      <Folder Include="IAM\Domain\Model\Queries\" />
+      <Folder Include="IAM\Domain\Model\ValueObjects\" />
+      <Folder Include="IAM\Domain\Services\" />
+      <Folder Include="IAM\Infrastructure\Persistence\EFC\Respositories\" />
+      <Folder Include="IAM\Infrastructure\Pipeline\Middleware\Attributes\" />
+      <Folder Include="IAM\Infrastructure\Pipeline\Middleware\Components\" />
+      <Folder Include="IAM\Infrastructure\Pipeline\Middleware\Extensions\" />
+      <Folder Include="IAM\Infrastructure\Tokens\JWT\Configuration\" />
+      <Folder Include="IAM\Infrastructure\Tokens\JWT\Services\" />
+      <Folder Include="IAM\Interfaces\REST\Resources\" />
+      <Folder Include="IAM\Interfaces\REST\Transform\" />
+      <Folder Include="OperationAndMonitoring\Application\Internal\OutboundServices\" />
+      <Folder Include="Shared\Application\Internal\EventHandler\" />
+      <Folder Include="Shared\Interfaces\Filters\" />
     </ItemGroup>
 
 </Project>
