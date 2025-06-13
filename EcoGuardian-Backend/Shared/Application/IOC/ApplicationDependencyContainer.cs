@@ -17,6 +17,9 @@ using EcoGuardian_Backend.SubscriptionsAndPayment.Domain.Services;
 using EcoGuardian_Backend.SubscriptionsAndPayment.Infrastructure.Persistence.EFC.Repositories;
 using EcoGuardian_Backend.OperationAndMonitoring.Interfaces.ACL;
 using EcoGuardian_Backend.OperationAndMonitoring.Interfaces.ACL.Service;
+using EcoGuardian_Backend.Planning.Application.Internal.CommandServices;
+using EcoGuardian_Backend.Planning.Application.Internal.QueryServices;
+using EcoGuardian_Backend.Planning.Domain.Services;
 
 namespace EcoGuardian_Backend.Shared.Application.IOC;
 
@@ -46,9 +49,13 @@ public static class ApplicationDependencyContainer
         services.AddScoped<IIamContextFacade, IamContextFacade>();
         services.AddScoped<IMonitorinContextFacade, MonitorinContextFacade>();
         services.AddScoped<IExternalUserService, ExternalUserService>();
+        services.AddScoped<IOrderCommandService, OrderCommandService>();
+        services.AddScoped<IOrderStateCommandService, OrderStateCommandService>();
+        services.AddScoped<IOrderQueryService, OrderQueryService>();
 
         // Register other application services as needed
         /*services.AddScoped<IExternalCustomerService, ExternalCustomerService>();*/
+
         return services;
     }
 }

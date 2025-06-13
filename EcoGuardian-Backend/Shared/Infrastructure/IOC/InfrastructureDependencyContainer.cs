@@ -2,6 +2,8 @@ using EcoGuardian_Backend.IAM.Domain.Respositories;
 using EcoGuardian_Backend.IAM.Infrastructure.Persistence.EFC.Respositories;
 using EcoGuardian_Backend.OperationAndMonitoring.Domain.Repositories;
 using EcoGuardian_Backend.OperationAndMonitoring.Infrastructure.Persistence.EFC.Repositories;
+using EcoGuardian_Backend.Planning.Domain.Repositories;
+using EcoGuardian_Backend.Planning.Infrastructure.Persistence.EFC.Repositories;
 using EcoGuardian_Backend.Shared.Domain.Repositories;
 using EcoGuardian_Backend.Shared.Infrastructure.Persistence.EFC.Configuration;
 using EcoGuardian_Backend.Shared.Infrastructure.Persistence.EFC.Repositories;
@@ -27,6 +29,8 @@ public static class InfrastructureDependencyContainer
         builder.Services.AddScoped<IUserRepository, UserRepository>();
         builder.Services.AddScoped<IUserRoleRepository, UserRoleRepository>();
         
+        services.AddScoped<IOrderRepository, OrderRepository>();
+        services.AddScoped<IOrderStateRepository, OrderStateRepository>();
         services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 
         services.AddDbContext<AppDbContext>(db =>

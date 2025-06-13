@@ -19,6 +19,9 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
         modelBuilder.ApplyConfiguration(new UserConfigurationBuilder());
         modelBuilder.ApplyConfiguration(new UserRoleConfigurationBuilder());
         modelBuilder.UseSnakeCaseWithPluralizedTableNamingConvention();
+        modelBuilder.ApplyConfiguration(new OrderConfigurationBuilder());
+        modelBuilder.ApplyConfiguration(new OrderStateConfigurationBuilder());
+        modelBuilder.UseSnakeCaseWithPluralizedTableNamingConvention();
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
