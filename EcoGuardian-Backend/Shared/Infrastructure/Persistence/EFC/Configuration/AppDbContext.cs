@@ -1,3 +1,4 @@
+
 using EcoGuardian_Backend.Shared.Infrastructure.Persistence.EFC.Configuration.Builders;
 using EcoGuardian_Backend.Shared.Infrastructure.Persistence.EFC.Configuration.Extensions;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +16,8 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
         modelBuilder.ApplyConfiguration(new PlantConfigurationBuilder());
         modelBuilder.ApplyConfiguration(new SubscriptionConfigurationBuilder());
         modelBuilder.ApplyConfiguration(new PaymentConfigurationBuilder());
+        modelBuilder.ApplyConfiguration(new UserConfigurationBuilder());
+        modelBuilder.ApplyConfiguration(new UserRoleConfigurationBuilder());
         modelBuilder.UseSnakeCaseWithPluralizedTableNamingConvention();
     }
 

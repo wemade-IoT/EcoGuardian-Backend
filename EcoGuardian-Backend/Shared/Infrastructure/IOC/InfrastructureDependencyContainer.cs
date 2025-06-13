@@ -1,4 +1,5 @@
-
+using EcoGuardian_Backend.IAM.Domain.Respositories;
+using EcoGuardian_Backend.IAM.Infrastructure.Persistence.EFC.Respositories;
 using EcoGuardian_Backend.OperationAndMonitoring.Domain.Repositories;
 using EcoGuardian_Backend.OperationAndMonitoring.Infrastructure.Persistence.EFC.Repositories;
 using EcoGuardian_Backend.Shared.Domain.Repositories;
@@ -22,13 +23,17 @@ public static class InfrastructureDependencyContainer
         services.AddScoped<IPaymentRepository, PaymentRepository>();
         services.AddScoped<ISubscriptionStateRepository, SubscriptionStateRepository>();
         services.AddScoped<ISubscriptionTypeRepository, SubscriptionTypeRepository>();
+        
+        builder.Services.AddScoped<IUserRepository, UserRepository>();
+        builder.Services.AddScoped<IUserRoleRepository, UserRoleRepository>();
+        
         services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 
         services.AddDbContext<AppDbContext>(db =>
         {
             if (builder.Environment.IsDevelopment())
             {
-               db.UseMySql(configuration.GetConnectionString("DefaultConnection"), ServerVersion.AutoDetect(configuration.GetConnectionString("DefaultConnection")));
+                db.UseMySql(configuration.GetConnectionString("DefaultConnection"), ServerVersion.AutoDetect(configuration.GetConnectionString("DefaultConnection")));
             }
             else if (builder.Environment.IsProduction())
             {
