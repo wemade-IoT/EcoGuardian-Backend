@@ -14,7 +14,7 @@ public class SubscriptionStateCommandService(IUnitOfWork unitOfWork
 {
     public async Task Handle(SeedSubscriptionStatesCommand command)
     {
-        var subscriptionStates = Enum.GetValues(typeof(ESubscriptionStates)).Cast<ESubscriptionTypes>();
+        var subscriptionStates = Enum.GetValues(typeof(ESubscriptionStates)).Cast<ESubscriptionStates>();
         foreach (var state in subscriptionStates)
         {
             var type = state.GetDescription();

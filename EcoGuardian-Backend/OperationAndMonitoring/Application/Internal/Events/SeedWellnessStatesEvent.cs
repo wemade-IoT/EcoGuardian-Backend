@@ -2,7 +2,7 @@
 using EcoGuardian_Backend.OperationAndMonitoring.Domain.Model.Commands;
 using EcoGuardian_Backend.OperationAndMonitoring.Domain.Services;
 
-namespace EcoGuardian_Backend.OperationAndMonitoring.Application.Internal.EventHandlers;
+namespace EcoGuardian_Backend.OperationAndMonitoring.Application.Internal.Events;
 
 public static class SeedWellnessStatesEvent
 {
