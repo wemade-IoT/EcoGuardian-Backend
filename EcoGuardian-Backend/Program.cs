@@ -1,6 +1,5 @@
 using EcoGuardian_Backend.IAM.Infrastructure.Pipeline.Middleware.Extensions;
 using EcoGuardian_Backend.Shared.Application.IOC;
-using EcoGuardian_Backend.Planning.Application.Internal.EventHandlers;
 using EcoGuardian_Backend.Shared.Application.IOC;
 using EcoGuardian_Backend.Shared.Infrastructure.IOC;
 using EcoGuardian_Backend.Shared.Infrastructure.Persistence.EFC.Configuration;

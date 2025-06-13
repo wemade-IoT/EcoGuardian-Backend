@@ -2,7 +2,9 @@ using EcoGuardian_Backend.IAM.Application.Internal.Events;
 using EcoGuardian_Backend.IAM.Domain.Model.Commands;
 using EcoGuardian_Backend.OperationAndMonitoring.Application.Internal.Events;
 using EcoGuardian_Backend.SubscriptionsAndPayment.Application.Internal.Events;
+using EcoGuardian_Backend.Planning.Application.Internal.Events;
 using EcoGuardian_Backend.OperationAndMonitoring.Domain.Model.Commands;
+using EcoGuardian_Backend.Planning.Domain.Model.Commands;
 using EcoGuardian_Backend.SubscriptionsAndPayment.Domain.Model.Commands;
 
 
@@ -17,10 +19,12 @@ public static class ApplicationReadyEventHandler
         var seedWellnessCommand = new SeedWellnessStatesCommand();
         var seedSubscriptionTypesCommand = new SeedSubscriptionTypesCommand();
         var seedSubscriptionStatesCommand = new SeedSubscriptionStatesCommand();
+        var seedOrderStatesCommand = new SeedOrderStatesCommand();
         provider.On(seedWellnessCommand);
         provider.On(seedRolesCommand);
         provider.On(seedSubscriptionStatesCommand);
         provider.On(seedSubscriptionTypesCommand);
+        provider.On(seedOrderStatesCommand);
         Console.WriteLine("Application Ready Event Completed");
         
     }
