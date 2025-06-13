@@ -1,0 +1,3 @@
+namespace EcoGuardian_Backend.SubscriptionsAndPayment.Interfaces.REST.Resources;
+
+public record ConfirmPaymentIntentResource(string PaymentIntentId);

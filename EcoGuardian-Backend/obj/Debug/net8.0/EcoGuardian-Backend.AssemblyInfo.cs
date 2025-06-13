@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EcoGuardian-Backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0e232ed99fb302fdc821a50103f9c9f7acf5b193")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+01d4452b874a4d88de2c6d288eb2ebc30c722972")]
 [assembly: System.Reflection.AssemblyProductAttribute("EcoGuardian-Backend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EcoGuardian-Backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

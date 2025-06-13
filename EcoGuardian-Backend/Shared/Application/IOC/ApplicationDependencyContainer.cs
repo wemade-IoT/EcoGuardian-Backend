@@ -10,6 +10,11 @@ using EcoGuardian_Backend.OperationAndMonitoring.Application.Internal.CommandSer
 using EcoGuardian_Backend.OperationAndMonitoring.Application.Internal.OutboundServices;
 using EcoGuardian_Backend.OperationAndMonitoring.Application.Internal.QueryServices;
 using EcoGuardian_Backend.OperationAndMonitoring.Domain.Services;
+using EcoGuardian_Backend.SubscriptionsAndPayment.Application.Internal.CommandServices;
+using EcoGuardian_Backend.SubscriptionsAndPayment.Application.Internal.QueryServices;
+using EcoGuardian_Backend.SubscriptionsAndPayment.Domain.Repositories;
+using EcoGuardian_Backend.SubscriptionsAndPayment.Domain.Services;
+using EcoGuardian_Backend.SubscriptionsAndPayment.Infrastructure.Persistence.EFC.Repositories;
 using EcoGuardian_Backend.OperationAndMonitoring.Interfaces.ACL;
 using EcoGuardian_Backend.OperationAndMonitoring.Interfaces.ACL.Service;
 
@@ -26,8 +31,14 @@ public static class ApplicationDependencyContainer
         services.AddScoped<IPlantCommandService, PlantCommandService>();
         services.AddScoped<IPlantQueryService, PlantQueryService>();
         services.AddScoped<IWellnessStateCommandService, WellnessCommandService>();
-       services.AddScoped<IRoleCommandService, RoleCommandService>();
+        services.AddScoped<ISubscriptionCommandService, SubscriptionCommandService>();
+        services.AddScoped<ISubscriptionQueryService, SubscriptionQueryService>();
+        services.AddScoped<IPaymentCommandService, PaymentCommandService>();
+        services.AddScoped<IPaymentQueryService, PaymentQueryService>();
+        services.AddScoped<ISubscriptionTypeCommandService, SubscriptionTypeCommandService>();
+        services.AddScoped<ISubscriptionStateCommandService, SubscriptionStateCommandService>();
 
+        services.AddScoped<IRoleCommandService, RoleCommandService>();
         services.AddScoped<IUserCommandService, UserCommandService>();
         services.AddScoped<IUserQueryService, UserQueryService>();
         services.AddScoped<ITokenService, TokenService>();
@@ -36,10 +47,8 @@ public static class ApplicationDependencyContainer
         services.AddScoped<IMonitorinContextFacade, MonitorinContextFacade>();
         services.AddScoped<IExternalUserService, ExternalUserService>();
 
-        
-
         // Register other application services as needed
-
+        /*services.AddScoped<IExternalCustomerService, ExternalCustomerService>();*/
         return services;
     }
 }
