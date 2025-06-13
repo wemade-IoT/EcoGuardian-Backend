@@ -1,4 +1,3 @@
-
 using EcoGuardian_Backend.IAM.Infrastructure.Pipeline.Middleware.Extensions;
 using EcoGuardian_Backend.Shared.Application.IOC;
 using EcoGuardian_Backend.Shared.Infrastructure.IOC;
@@ -13,6 +12,16 @@ var configuration = builder.Configuration;
 builder.Services.AddInfrastructureDependencies(builder, configuration);
 builder.Services.AddApplicationDependencies();
 builder.Services.AddInterfaceDependencies(builder);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
 
 builder.WebHost.ConfigureKestrel(options =>
 {
@@ -41,9 +50,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("AllowAllOrigins");
 app.MapControllers();
 app.UseRequestAuthorization();
-app.UseCors("AllowAllOrigins");
 
 
 app.Run();
