@@ -10,11 +10,12 @@ using EcoGuardian_Backend.CRM.Domain.Services;
 namespace EcoGuardian_Backend.CRM.Application.Internal.EventHandlers
 {
     public class AddedQuestionEventHandler(IQuestionCommandService questionCommandService) : IAddedQuestionEventHandler
-    // 🎯 Cambiar QuestionCommandService por IQuestionCommandService
     {
         public async Task HandleAnswerAddedAsync(int questionId)
         {
             var command = new UpdateQuestionCommand(questionId, QuestionState.Resolved);
+
+            // Update the question state to Resolved when an answer is added
             await questionCommandService.Handle(command);
             
             Console.WriteLine($"Answer has been registered for Question {questionId}.");

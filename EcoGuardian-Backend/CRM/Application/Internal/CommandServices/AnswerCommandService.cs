@@ -7,13 +7,19 @@ using EcoGuardian_Backend.Shared.Domain.Repositories;
 
 namespace EcoGuardian_Backend.CRM.Application.Internal.CommandServices;
 
-public class AnswerCommandService(IAnswerRepository answerRepository, IUnitOfWork unitOfWork) : IAnswerCommandService
+public class AnswerCommandService(
+    IAnswerRepository answerRepository, 
+    IUnitOfWork unitOfWork,
+    IAddedQuestionEventHandler eventHandler) : IAnswerCommandService
 {
     public async Task Handle(RegisterAnswerCommand command)
     {
         var answer = new Answer(command);
         await answerRepository.AddAsync(answer);
         await unitOfWork.CompleteAsync();
+        
+        //Update the question state to Resolved when an answer is added
+        await eventHandler.HandleAnswerAddedAsync(command.QuestionId);
     }
 
 }

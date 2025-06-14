@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EcoGuardian_Backend.CRM.Domain.Model.Commands;
 using EcoGuardian_Backend.CRM.Domain.Services;
 using EcoGuardian_Backend.CRM.Interfaces.Rest.Resources;
 using EcoGuardian_Backend.CRM.Interfaces.Rest.Transform;
@@ -11,38 +12,33 @@ namespace EcoGuardian_Backend.CRM.Interfaces.Rest
 {
     [ApiController]
     [ProducesResponseType(500)]
-    [Route("api/v1/[controller]")] public class QuestionController(
+    [Route("api/v1/[controller]")]
+ public class QuestionController(
         IQuestionCommandService questionCommandService, 
         IQuestionQueryService questionQueryService, 
         IAnswerCommandService answerCommandService, 
         IAnswerQueryService answerQueryService, 
         IAddedQuestionEventHandler addedQuestionEventHandler) : ControllerBase
-    {
+        {
 
         [HttpPost]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
-        public async Task<IActionResult> RegisterQuestion([FromBody] RegisterQuestionResource resource)
+        public async Task<IActionResult> RegisterQuestion([FromBody] RegisterQuestionCommand command)
         {
-            var command = RegisterQuestionCommandFromResourceAssembler.ToCommandFromResource(resource);
             await questionCommandService.Handle(command);
-            return CreatedAtAction(nameof(RegisterQuestion), resource);
+            return CreatedAtAction(nameof(RegisterQuestion), command);
         }
 
         [HttpPut]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
-        public async Task<IActionResult> UpdateQuestion([FromBody] UpdateQuestionStatusResource resource)
+        public async Task<IActionResult> UpdateQuestion([FromBody] UpdateQuestionCommand command)
         {
-            var command = UpdateQuestionCommandFromResourceAssembler.ToCommandFromResource(resource);
             await questionCommandService.Handle(command);
             var question = await questionQueryService.GetQuestionById(command.QuestionId);
-            if (question == null)
-            {
-                return NotFound();
-            }
-            var questionResource = QuestionResourceFromEntityAssembler.ToResourceFromEntity(question);
-            return Ok(questionResource);
+            var updatedQuestion = QuestionResourceFromEntityAssembler.ToResourceFromEntity(question);
+            return Ok(updatedQuestion);
         }
 
         [HttpGet("{questionId:int}")]
@@ -56,6 +52,7 @@ namespace EcoGuardian_Backend.CRM.Interfaces.Rest
                 return NotFound();
             }
             var questionResource = QuestionResourceFromEntityAssembler.ToResourceFromEntity(question);
+
             return Ok(questionResource);
         }
 
@@ -66,11 +63,13 @@ namespace EcoGuardian_Backend.CRM.Interfaces.Rest
         public async Task<IActionResult> GetAnswersByQuestionId(int questionId)
         {
             var answers = await answerQueryService.GetAnswersByQuestionId(questionId);
-            if (answers == null || !answers.Any())
+            var question = await questionQueryService.GetQuestionById(questionId);
+            if (answers == null || !answers.Any() || question == null)
             {
                 return NotFound();
             }
-            return Ok(answers);
+            var answersResource = answers.Select(answer => AnswerResourceFromEntityAssembler.FromEntity(answer, question)).ToList();
+            return Ok(answersResource);
         }
 
         [HttpPost("{questionId:int}/answers")]
@@ -82,8 +81,10 @@ namespace EcoGuardian_Backend.CRM.Interfaces.Rest
     
             await answerCommandService.Handle(command);
             await addedQuestionEventHandler.HandleAnswerAddedAsync(questionId);
+            
+            var answer = await answerQueryService.GetAnswersByQuestionId(questionId);
     
-            return CreatedAtAction(nameof(RegisterAnswer), new { questionId }, command);
+            return Ok(answer);
 
         }
 
