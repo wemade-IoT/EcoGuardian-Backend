@@ -3,6 +3,7 @@ using EcoGuardian_Backend.Planning.Domain.Model.Queries;
 using EcoGuardian_Backend.Planning.Domain.Services;
 using EcoGuardian_Backend.Planning.Interfaces.REST.Resources;
 using EcoGuardian_Backend.Planning.Interfaces.REST.Transform;
+using EcoGuardian_Backend.Shared.Interfaces.Filters;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,6 +17,7 @@ public class OrderController(IOrderCommandService orderCommandService, IOrderQue
 {
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
+    [AuthorizeFilter("Admin", "Domestic", "Business")]
     public async Task<IActionResult> CreateOrder([FromBody] CreateOrderResource resource)
     {
         var command = CreateOrderCommandFromResourceAssembler.ToCommandFromResource(resource);
@@ -25,6 +27,7 @@ public class OrderController(IOrderCommandService orderCommandService, IOrderQue
     
     [HttpPut("{id:int}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
+    [AuthorizeFilter("Admin", "Domestic", "Business", "Specialist")]
     public async Task<IActionResult> UpdateOrder(int id, [FromBody] UpdateOrderResource resource)
     {
         var command = UpdateOrderCommandFromResourceAssembler.ToCommandFromResource(id, resource);
@@ -34,6 +37,7 @@ public class OrderController(IOrderCommandService orderCommandService, IOrderQue
     
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
+    [AuthorizeFilter("Admin", "Domestic", "Business", "Specialist")]
     public async Task<IActionResult> GetOrdersByConsumerId([FromQuery] int consumerId)
     {
         var query = new GetOrdersByConsumerIdQuery(consumerId);
