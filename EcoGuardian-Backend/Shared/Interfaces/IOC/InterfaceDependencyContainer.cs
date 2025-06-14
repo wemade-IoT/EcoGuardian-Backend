@@ -1,5 +1,6 @@
 using EcoGuardian_Backend.IAM.Infrastructure.Tokens.JWT.Configuration;
 using EcoGuardian_Backend.Shared.Interfaces.ASP.Configuration;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
@@ -38,11 +39,12 @@ public static class InterfaceDependencyContainer
         builder.Services.Configure<TokenSettings>(builder.Configuration.GetSection("TokenSettings"));
         builder.Services.AddCors(options =>
         {
-            options.AddPolicy("AllowAllOrigins", builder =>
+            options.AddPolicy("AllowAllOrigins", corsBuilder =>
             {
-                builder.AllowAnyOrigin()
-                       .AllowAnyMethod()
-                       .AllowAnyHeader();
+                corsBuilder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+                
             });
         });
         builder.Services.AddRouting(options => options.LowercaseUrls = true);

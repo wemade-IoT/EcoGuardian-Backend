@@ -13,15 +13,6 @@ var configuration = builder.Configuration;
 builder.Services.AddInfrastructureDependencies(builder, configuration);
 builder.Services.AddApplicationDependencies();
 builder.Services.AddInterfaceDependencies(builder);
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAllOrigins", policy =>
-    {
-        policy.AllowAnyOrigin()
-              .AllowAnyHeader()
-              .AllowAnyMethod();
-    });
-});
 
 builder.WebHost.ConfigureKestrel(options =>
 {
@@ -48,12 +39,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-app.UseHttpsRedirection();
 app.UseCors("AllowAllOrigins");
+app.UseHttpsRedirection();
 app.MapControllers();
 app.UseRequestAuthorization();
-
 
 app.Run();
 
