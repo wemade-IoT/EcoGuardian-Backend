@@ -14,6 +14,10 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
         modelBuilder.ApplyConfiguration(new SubscriptionStateConfigurationBuilder());
         modelBuilder.ApplyConfiguration(new SubscriptionTypeConfigurationBuilder());
         modelBuilder.ApplyConfiguration(new PlantConfigurationBuilder());
+
+        modelBuilder.ApplyConfiguration(new QuestionConfigurationBuilder());
+        modelBuilder.ApplyConfiguration(new AnswerConfigurationBuilder());
+        modelBuilder.UseSnakeCaseWithPluralizedTableNamingConvention();
         modelBuilder.ApplyConfiguration(new SubscriptionConfigurationBuilder());
         modelBuilder.ApplyConfiguration(new PaymentConfigurationBuilder());
         modelBuilder.ApplyConfiguration(new UserConfigurationBuilder());

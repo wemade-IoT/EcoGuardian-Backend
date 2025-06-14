@@ -1,5 +1,7 @@
 using EcoGuardian_Backend.IAM.Domain.Respositories;
 using EcoGuardian_Backend.IAM.Infrastructure.Persistence.EFC.Respositories;
+using EcoGuardian_Backend.CRM.Domain.Repositories;
+using EcoGuardian_Backend.CRM.Infrastructure.Persistence.EFC.Repositories;
 using EcoGuardian_Backend.OperationAndMonitoring.Domain.Repositories;
 using EcoGuardian_Backend.OperationAndMonitoring.Infrastructure.Persistence.EFC.Repositories;
 using EcoGuardian_Backend.Planning.Domain.Repositories;
@@ -20,6 +22,8 @@ public static class InfrastructureDependencyContainer
     {
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IPlantRepository, PlantRepository>();
+        services.AddScoped<IQuestionRepository, QuestionRepository>();
+        services.AddScoped<IAnswerRepository, AnswerRepository>();
         services.AddScoped<IWellnessStateRepository, WellnessStateRepository>();
         services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
         services.AddScoped<IPaymentRepository, PaymentRepository>();

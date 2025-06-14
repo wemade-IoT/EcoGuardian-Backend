@@ -1,3 +1,7 @@
+using EcoGuardian_Backend.CRM.Application.Internal.CommandServices;
+using EcoGuardian_Backend.CRM.Application.Internal.EventHandlers;
+using EcoGuardian_Backend.CRM.Application.Internal.QueryServices;
+using EcoGuardian_Backend.CRM.Domain.Services;
 using EcoGuardian_Backend.IAM.Application.Internal.CommandServices;
 using EcoGuardian_Backend.IAM.Application.Internal.OutboundServices;
 using EcoGuardian_Backend.IAM.Application.Internal.QueryServices;
@@ -40,6 +44,16 @@ public static class ApplicationDependencyContainer
         services.AddScoped<IPaymentQueryService, PaymentQueryService>();
         services.AddScoped<ISubscriptionTypeCommandService, SubscriptionTypeCommandService>();
         services.AddScoped<ISubscriptionStateCommandService, SubscriptionStateCommandService>();
+        services.AddScoped<IQuestionCommandService, QuestionCommandService>();
+        services.AddScoped<IAnswerCommandService, AnswerCommandService>();
+        services.AddScoped<IAnswerQueryService, AnswerQueryService>();
+        services.AddScoped<IQuestionQueryService, QuestionQueryService>();
+
+
+
+
+        // EventHandler
+        services.AddScoped<IAddedQuestionEventHandler, AddedQuestionEventHandler>();
 
         services.AddScoped<IRoleCommandService, RoleCommandService>();
         services.AddScoped<IUserCommandService, UserCommandService>();
