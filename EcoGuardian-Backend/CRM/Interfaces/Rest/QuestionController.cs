@@ -26,8 +26,9 @@ namespace EcoGuardian_Backend.CRM.Interfaces.Rest
         [ProducesResponseType(400)]
         public async Task<IActionResult> RegisterQuestion([FromBody] RegisterQuestionCommand command)
         {
-            await questionCommandService.Handle(command);
-            return CreatedAtAction(nameof(RegisterQuestion), command);
+            var question = await questionCommandService.Handle(command);
+            var questionResource = QuestionResourceFromEntityAssembler.ToResourceFromEntity(question);
+            return Ok(questionResource);
         }
 
         [HttpPut]
@@ -56,6 +57,35 @@ namespace EcoGuardian_Backend.CRM.Interfaces.Rest
             return Ok(questionResource);
         }
 
+        // By uSer ID
+        [HttpGet("user/{userId:int}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        public async Task<IActionResult> GetQuestionsByUserId(int userId)
+        {
+            var questions = await questionQueryService.GetQuestionsByUserId(userId);
+            if (questions == null || !questions.Any())
+            {
+                return NotFound();
+            }
+            var questionsResource = questions.Select(QuestionResourceFromEntityAssembler.ToResourceFromEntity).ToList();
+            return Ok(questionsResource);
+        }
+
+        // By Plant ID
+        [HttpGet("plant/{plantId:int}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        public async Task<IActionResult> GetQuestionsByPlantId(int plantId)
+        {
+            var questions = await questionQueryService.GetQuestionsByPlantId(plantId);
+            if (questions == null || !questions.Any())
+            {
+                return NotFound();
+            }
+            var questionsResource = questions.Select(QuestionResourceFromEntityAssembler.ToResourceFromEntity).ToList();
+            return Ok(questionsResource);
+        }
 
         [HttpGet("{questionId:int}/answers")]
         [ProducesResponseType(200)]
@@ -84,10 +114,13 @@ namespace EcoGuardian_Backend.CRM.Interfaces.Rest
             
             var answer = await answerQueryService.GetAnswersByQuestionId(questionId);
     
-            return Ok(answer);
-
+            var question = await questionQueryService.GetQuestionById(questionId);
+            if (answer == null || !answer.Any() || question == null)
+            {
+                return NotFound();
+            }
+            var answersResource = answer.Select(answer => AnswerResourceFromEntityAssembler.FromEntity(answer, question)).ToList();
+            return Ok(answersResource);
         }
-
-
     }
 }

@@ -23,6 +23,7 @@ namespace EcoGuardian_Backend.CRM.Domain.Model.Aggregates
         {
             QuestionId = command.QuestionId;
             Content = command.AnswerText;
+            SpecialistId = command.SpecialistId;
             CreatedAt = DateTime.UtcNow;
         }
 

@@ -8,9 +8,12 @@ using EcoGuardian_Backend.CRM.Interfaces.Rest.Resources;
 
 namespace EcoGuardian_Backend.CRM.Interfaces.Rest.Transform
 {    public class QuestionResourceFromEntityAssembler
-    {
-        public static QuestionResource ToResourceFromEntity(Question question)
+    {        public static QuestionResource ToResourceFromEntity(Question question)
         {
+            Console.WriteLine("Objeto Pregunta." + question + "Imagenes" + question.Images);
+
+            Console.WriteLine("Imagenes pasadas a string" + question.Images?.Select(img => img.ImageUrl).ToList() );
+
             return new QuestionResource
             {
                 QuestionId = question.Id,
@@ -18,7 +21,8 @@ namespace EcoGuardian_Backend.CRM.Interfaces.Rest.Transform
                 Content = question.Content,
                 Status = ParseQuestionStateToString(question.State),
                 CreatedAt = question.CreatedAt,
-                PlantId = question.PlantId, 
+                PlantId = question.PlantId,
+                ImageUrls = question.Images?.Select(img => img.ImageUrl).ToList()
             };
         }
 
