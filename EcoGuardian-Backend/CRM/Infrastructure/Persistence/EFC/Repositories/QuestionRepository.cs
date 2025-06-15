@@ -13,16 +13,18 @@ namespace EcoGuardian_Backend.CRM.Infrastructure.Persistence.EFC.Repositories
 {
     public class QuestionRepository(AppDbContext context) : BaseRepository<Question>(context), IQuestionRepository
     {
-        public async Task<Question> GetQuestionById(int questionId)
+        public async Task<Question?> GetQuestionById(int questionId)
         {
             return await context.Set<Question>()
+            .Include(q => q.Images)
             .Where(q => q.Id == questionId)
-            .FirstAsync();
+            .FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<Question>> GetQuestionsByPlantId(int plantId)
         {
             return await context.Set<Question>()
+            .Include(q => q.Images)
             .Where(q => q.PlantId == plantId)
             .ToListAsync();
         }
@@ -31,6 +33,7 @@ namespace EcoGuardian_Backend.CRM.Infrastructure.Persistence.EFC.Repositories
         public async Task<IEnumerable<Question>> GetQuestionsByState(QuestionState questionState)
         {
             return await context.Set<Question>()
+                .Include(q => q.Images)
                 .Where(q => q.State == questionState)
                 .ToListAsync();
 
@@ -39,6 +42,7 @@ namespace EcoGuardian_Backend.CRM.Infrastructure.Persistence.EFC.Repositories
         public async Task<IEnumerable<Question>> GetQuestionsByUserId(int userId)
         {
             return await context.Set<Question>()
+                .Include(q => q.Images)
                 .Where(q => q.UserId == userId)
                 .ToListAsync();
         }

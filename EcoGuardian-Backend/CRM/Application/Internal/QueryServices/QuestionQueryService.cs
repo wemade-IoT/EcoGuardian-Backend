@@ -16,7 +16,7 @@ namespace EcoGuardian_Backend.CRM.Application.Internal.QueryServices
         {
             try
             {
-                var question = await questionRepository.GetByIdAsync(questionId);
+                var question = await questionRepository.GetQuestionById(questionId);
                 if(question == null)
                 {
                     throw new KeyNotFoundException($"Question with ID {questionId} not found.");

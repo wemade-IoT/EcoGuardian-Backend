@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 namespace EcoGuardian_Backend.CRM.Domain.Model.Commands;
 
 public record RegisterQuestionCommand(
-string Title,
-string Content,
-int UserId,
-int PlantId
+    string Title,
+    string Content,
+    int UserId,
+    int PlantId,
+    List<string>? ImageUrls
 );

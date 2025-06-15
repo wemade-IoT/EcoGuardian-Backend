@@ -1,5 +1,6 @@
 using EcoGuardian_Backend.CRM.Application.Internal.CommandServices;
 using EcoGuardian_Backend.CRM.Application.Internal.EventHandlers;
+using EcoGuardian_Backend.CRM.Application.Internal.OutboundServices;
 using EcoGuardian_Backend.CRM.Application.Internal.QueryServices;
 using EcoGuardian_Backend.CRM.Domain.Services;
 using EcoGuardian_Backend.IAM.Application.Internal.CommandServices;
@@ -24,6 +25,7 @@ using EcoGuardian_Backend.OperationAndMonitoring.Interfaces.ACL.Service;
 using EcoGuardian_Backend.Planning.Application.Internal.CommandServices;
 using EcoGuardian_Backend.Planning.Application.Internal.QueryServices;
 using EcoGuardian_Backend.Planning.Domain.Services;
+using EcoGuardian_Backend.CRM.Application.Internal.OutboundServices;
 
 namespace EcoGuardian_Backend.Shared.Application.IOC;
 
@@ -48,6 +50,9 @@ public static class ApplicationDependencyContainer
         services.AddScoped<IAnswerCommandService, AnswerCommandService>();
         services.AddScoped<IAnswerQueryService, AnswerQueryService>();
         services.AddScoped<IQuestionQueryService, QuestionQueryService>();
+
+        // External User Service for CRM
+        services.AddScoped<IExternalUserServiceCRM, ExternalUserServiceCRM>();
 
 
 

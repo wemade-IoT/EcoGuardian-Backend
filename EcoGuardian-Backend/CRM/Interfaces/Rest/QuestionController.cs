@@ -26,8 +26,9 @@ namespace EcoGuardian_Backend.CRM.Interfaces.Rest
         [ProducesResponseType(400)]
         public async Task<IActionResult> RegisterQuestion([FromBody] RegisterQuestionCommand command)
         {
-            await questionCommandService.Handle(command);
-            return CreatedAtAction(nameof(RegisterQuestion), command);
+            var question = await questionCommandService.Handle(command);
+            var questionResource = QuestionResourceFromEntityAssembler.ToResourceFromEntity(question);
+            return Ok(questionResource);
         }
 
         [HttpPut]
@@ -84,10 +85,13 @@ namespace EcoGuardian_Backend.CRM.Interfaces.Rest
             
             var answer = await answerQueryService.GetAnswersByQuestionId(questionId);
     
-            return Ok(answer);
-
+            var question = await questionQueryService.GetQuestionById(questionId);
+            if (answer == null || !answer.Any() || question == null)
+            {
+                return NotFound();
+            }
+            var answersResource = answer.Select(answer => AnswerResourceFromEntityAssembler.FromEntity(answer, question)).ToList();
+            return Ok(answersResource);
         }
-
-
     }
 }

@@ -8,15 +8,15 @@ using EcoGuardian_Backend.CRM.Interfaces.Rest.Resources;
 namespace EcoGuardian_Backend.CRM.Interfaces.Rest.Transform;
 
     public class RegisterQuestionCommandFromResourceAssembler
-    {
-        public static RegisterQuestionCommand ToCommandFromResource(
+    {        public static RegisterQuestionCommand ToCommandFromResource(
            RegisterQuestionResource resource)
         {
             return new RegisterQuestionCommand(
                 Title: resource.Title,
                 Content: resource.QuestionText,
                 UserId: resource.UserId,
-                PlantId: resource.PlantId
+                PlantId: resource.PlantId,
+                ImageUrls: resource.ImageUrls
             );
         }
     }
