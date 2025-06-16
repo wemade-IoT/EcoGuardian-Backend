@@ -15,6 +15,7 @@ using EcoGuardian_Backend.OperationAndMonitoring.Application.Internal.CommandSer
 using EcoGuardian_Backend.OperationAndMonitoring.Application.Internal.OutboundServices;
 using EcoGuardian_Backend.OperationAndMonitoring.Application.Internal.QueryServices;
 using EcoGuardian_Backend.OperationAndMonitoring.Domain.Services;
+using EcoGuardian_Backend.OperationAndMonitoring.Infrastructure.IOC;
 using EcoGuardian_Backend.SubscriptionsAndPayment.Application.Internal.CommandServices;
 using EcoGuardian_Backend.SubscriptionsAndPayment.Application.Internal.QueryServices;
 using EcoGuardian_Backend.SubscriptionsAndPayment.Domain.Repositories;
@@ -71,6 +72,9 @@ public static class ApplicationDependencyContainer
         services.AddScoped<IOrderCommandService, OrderCommandService>();
         services.AddScoped<IOrderStateCommandService, OrderStateCommandService>();
         services.AddScoped<IOrderQueryService, OrderQueryService>();
+
+        // Registrar las dependencias de IoT
+        services.AddIoTDependencies();
 
         // Register other application services as needed
         /*services.AddScoped<IExternalCustomerService, ExternalCustomerService>();*/
