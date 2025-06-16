@@ -17,20 +17,20 @@ public class IoTDeviceRepository : BaseRepository<IoTDevice>, IIoTDeviceReposito
 
     public async Task<IEnumerable<IoTDevice>> GetByUserIdAsync(int userId)
     {
-        return await _context.Set<IoTDevice>()
+        return await context.Set<IoTDevice>()
             .Where(d => d.UserId == userId)
             .ToListAsync();
     }
 
     public async Task<IoTDevice?> GetByDeviceIdAsync(string deviceId)
     {
-        return await _context.Set<IoTDevice>()
+        return await context.Set<IoTDevice>()
             .FirstOrDefaultAsync(d => d.DeviceId == deviceId);
     }
 
     public async Task<IEnumerable<IoTDevice>> GetByPlantIdAsync(int plantId)
     {
-        return await _context.Set<IoTDevice>()
+        return await context.Set<IoTDevice>()
             .Where(d => d.PlantId == plantId)
             .ToListAsync();
     }

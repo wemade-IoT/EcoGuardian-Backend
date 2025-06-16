@@ -18,7 +18,7 @@ public class IoTDataRepository : BaseRepository<IoTData>, IIoTDataRepository
 
     public async Task<IEnumerable<IoTData>> GetByDeviceIdAsync(string deviceId)
     {
-        return await _context.Set<IoTData>()
+        return await context.Set<IoTData>()
             .Where(d => d.DeviceId == deviceId)
             .OrderByDescending(d => d.Timestamp)
             .ToListAsync();
@@ -26,7 +26,7 @@ public class IoTDataRepository : BaseRepository<IoTData>, IIoTDataRepository
 
     public async Task<IEnumerable<IoTData>> GetByDeviceIdAndTimeRangeAsync(string deviceId, DateTime startDate, DateTime endDate)
     {
-        return await _context.Set<IoTData>()
+        return await context.Set<IoTData>()
             .Where(d => d.DeviceId == deviceId && d.Timestamp >= startDate && d.Timestamp <= endDate)
             .OrderByDescending(d => d.Timestamp)
             .ToListAsync();
@@ -34,7 +34,7 @@ public class IoTDataRepository : BaseRepository<IoTData>, IIoTDataRepository
 
     public async Task<IEnumerable<IoTData>> GetByDeviceIdAndDataTypeAsync(string deviceId, string dataType)
     {
-        return await _context.Set<IoTData>()
+        return await context.Set<IoTData>()
             .Where(d => d.DeviceId == deviceId && d.DataType == dataType)
             .OrderByDescending(d => d.Timestamp)
             .ToListAsync();
