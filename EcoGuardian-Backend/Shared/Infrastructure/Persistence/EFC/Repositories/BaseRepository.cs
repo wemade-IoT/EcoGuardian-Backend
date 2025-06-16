@@ -6,6 +6,8 @@ namespace EcoGuardian_Backend.Shared.Infrastructure.Persistence.EFC.Repositories
 
 public class BaseRepository<TEntity>(AppDbContext context) : IBaseRepository<TEntity> where TEntity : class
 {
+    protected readonly AppDbContext context = context;
+
     public async Task<IEnumerable<TEntity>> GetAllAsync()
     {
         return await context.Set<TEntity>().ToListAsync();
@@ -18,7 +20,6 @@ public class BaseRepository<TEntity>(AppDbContext context) : IBaseRepository<TEn
 
     public async Task<bool> AddAsync(TEntity entity)
     {
-      
         await context.Set<TEntity>().AddAsync(entity);
         return true;
     }
