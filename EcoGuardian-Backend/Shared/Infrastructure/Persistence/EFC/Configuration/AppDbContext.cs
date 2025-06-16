@@ -23,6 +23,8 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
         modelBuilder.ApplyConfiguration(new UserRoleConfigurationBuilder());
         modelBuilder.ApplyConfiguration(new OrderConfigurationBuilder());
         modelBuilder.ApplyConfiguration(new OrderStateConfigurationBuilder());
+        modelBuilder.ApplyConfiguration(new IoTDeviceConfigurationBuilder());
+        modelBuilder.ApplyConfiguration(new IoTDataConfigurationBuilder());
         modelBuilder.UseSnakeCaseWithPluralizedTableNamingConvention();
     }
 
