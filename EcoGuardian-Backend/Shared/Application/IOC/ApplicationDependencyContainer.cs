@@ -26,6 +26,9 @@ using EcoGuardian_Backend.Planning.Application.Internal.CommandServices;
 using EcoGuardian_Backend.Planning.Application.Internal.QueryServices;
 using EcoGuardian_Backend.Planning.Domain.Services;
 using EcoGuardian_Backend.CRM.Application.Internal.OutboundServices;
+using EcoGuardian_Backend.ProfilePreferences.Application.Internal.CommandServices;
+using EcoGuardian_Backend.ProfilePreferences.Application.Internal.QueryServices;
+using EcoGuardian_Backend.ProfilePreferences.Domain.Services;
 
 namespace EcoGuardian_Backend.Shared.Application.IOC;
 
@@ -71,7 +74,10 @@ public static class ApplicationDependencyContainer
         services.AddScoped<IOrderCommandService, OrderCommandService>();
         services.AddScoped<IOrderStateCommandService, OrderStateCommandService>();
         services.AddScoped<IOrderQueryService, OrderQueryService>();
-
+        
+        services.AddScoped<IProfileCommandService, ProfileCommandService>();
+        services.AddScoped<IProfileQueryService, ProfileQueryService>();
+        
         // Register other application services as needed
         /*services.AddScoped<IExternalCustomerService, ExternalCustomerService>();*/
 

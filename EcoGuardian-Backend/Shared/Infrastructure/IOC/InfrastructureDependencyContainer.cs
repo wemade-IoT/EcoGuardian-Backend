@@ -6,6 +6,8 @@ using EcoGuardian_Backend.OperationAndMonitoring.Domain.Repositories;
 using EcoGuardian_Backend.OperationAndMonitoring.Infrastructure.Persistence.EFC.Repositories;
 using EcoGuardian_Backend.Planning.Domain.Repositories;
 using EcoGuardian_Backend.Planning.Infrastructure.Persistence.EFC.Repositories;
+using EcoGuardian_Backend.ProfilePreferences.Domain.Repositories;
+using EcoGuardian_Backend.ProfilePreferences.Infrastructure.Persistence.EFC.Repositories;
 using EcoGuardian_Backend.Shared.Domain.Repositories;
 using EcoGuardian_Backend.Shared.Infrastructure.Persistence.EFC.Configuration;
 using EcoGuardian_Backend.Shared.Infrastructure.Persistence.EFC.Repositories;
@@ -29,6 +31,8 @@ public static class InfrastructureDependencyContainer
         services.AddScoped<IPaymentRepository, PaymentRepository>();
         services.AddScoped<ISubscriptionStateRepository, SubscriptionStateRepository>();
         services.AddScoped<ISubscriptionTypeRepository, SubscriptionTypeRepository>();
+        
+        services.AddScoped<IProfileRepository, ProfileRepository>();
         
         builder.Services.AddScoped<IUserRepository, UserRepository>();
         builder.Services.AddScoped<IUserRoleRepository, UserRoleRepository>();
