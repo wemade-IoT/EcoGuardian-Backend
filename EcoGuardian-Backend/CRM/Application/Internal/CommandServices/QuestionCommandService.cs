@@ -20,7 +20,7 @@ public class QuestionCommandService(IQuestionRepository questionRepository, IUni
         // Check if the plant exists
         if (!await externalUserService.CheckPlantExists(command.PlantId))
         {
-            throw new BadHttpRequestException($"Plant with ID {command.UserId} does not exist.");
+            throw new BadHttpRequestException($"Plant with ID {command.PlantId} does not exist.");
         }
 
         var question = new Question(command);
