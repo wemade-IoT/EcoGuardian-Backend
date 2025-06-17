@@ -29,6 +29,8 @@ using EcoGuardian_Backend.CRM.Application.Internal.OutboundServices;
 using EcoGuardian_Backend.ProfilePreferences.Application.Internal.CommandServices;
 using EcoGuardian_Backend.ProfilePreferences.Application.Internal.QueryServices;
 using EcoGuardian_Backend.ProfilePreferences.Domain.Services;
+using EcoGuardian_Backend.ProfilePreferences.Interfaces.ACL;
+using EcoGuardian_Backend.ProfilePreferences.Interfaces.ACL.Service;
 
 namespace EcoGuardian_Backend.Shared.Application.IOC;
 
@@ -69,6 +71,7 @@ public static class ApplicationDependencyContainer
         services.AddScoped<ITokenService, TokenService>();
         services.AddScoped<IHashingService, HashingService>();
         services.AddScoped<IIamContextFacade, IamContextFacade>();
+        services.AddScoped<IProfileContextFacade, ProfileContextFacade>();
         services.AddScoped<IMonitorinContextFacade, MonitorinContextFacade>();
         services.AddScoped<IExternalUserService, ExternalUserService>();
         services.AddScoped<IOrderCommandService, OrderCommandService>();
