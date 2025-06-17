@@ -13,13 +13,13 @@ namespace EcoGuardian_Backend.CRM.Interfaces.Rest
     [ApiController]
     [ProducesResponseType(500)]
     [Route("api/v1/[controller]")]
- public class QuestionController(
-        IQuestionCommandService questionCommandService, 
-        IQuestionQueryService questionQueryService, 
-        IAnswerCommandService answerCommandService, 
-        IAnswerQueryService answerQueryService, 
+    public class QuestionController(
+        IQuestionCommandService questionCommandService,
+        IQuestionQueryService questionQueryService,
+        IAnswerCommandService answerCommandService,
+        IAnswerQueryService answerQueryService,
         IAddedQuestionEventHandler addedQuestionEventHandler) : ControllerBase
-        {
+    {
 
         [HttpPost]
         [ProducesResponseType(201)]
@@ -107,13 +107,13 @@ namespace EcoGuardian_Backend.CRM.Interfaces.Rest
         [ProducesResponseType(400)]
         public async Task<IActionResult> RegisterAnswer(int questionId, [FromBody] RegisterAnswerResource resource)
         {
-             var command = RegisterAnswerCommandFromResourceAssembler.toCommandFromResource(resource,questionId);
-    
+            var command = RegisterAnswerCommandFromResourceAssembler.toCommandFromResource(resource, questionId);
+
             await answerCommandService.Handle(command);
             await addedQuestionEventHandler.HandleAnswerAddedAsync(questionId);
-            
+
             var answer = await answerQueryService.GetAnswersByQuestionId(questionId);
-    
+
             var question = await questionQueryService.GetQuestionById(questionId);
             if (answer == null || !answer.Any() || question == null)
             {
@@ -122,5 +122,21 @@ namespace EcoGuardian_Backend.CRM.Interfaces.Rest
             var answersResource = answer.Select(answer => AnswerResourceFromEntityAssembler.FromEntity(answer, question)).ToList();
             return Ok(answersResource);
         }
+
+        //Get all questions
+        [HttpGet]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        public async Task<IActionResult> GetAllQuestions()
+        {
+            var questions = await questionQueryService.GetAllQuestions();
+            if (questions == null || !questions.Any())
+            {
+                return NotFound();
+            }
+            var questionsResource = questions.Select(QuestionResourceFromEntityAssembler.ToResourceFromEntity).ToList();
+            return Ok(questionsResource);
+        }
+
     }
 }

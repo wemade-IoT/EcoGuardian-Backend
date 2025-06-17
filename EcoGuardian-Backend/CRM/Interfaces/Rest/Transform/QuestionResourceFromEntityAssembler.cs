@@ -21,6 +21,8 @@ namespace EcoGuardian_Backend.CRM.Interfaces.Rest.Transform
                 Content = question.Content,
                 Status = ParseQuestionStateToString(question.State),
                 CreatedAt = question.CreatedAt,
+                UserId = question.UserId,
+                UpdatedAt = question.UpdatedAt ?? DateTime.UtcNow,
                 PlantId = question.PlantId,
                 ImageUrls = question.Images?.Select(img => img.ImageUrl).ToList()
             };
@@ -30,10 +32,10 @@ namespace EcoGuardian_Backend.CRM.Interfaces.Rest.Transform
         {
             return state switch
             {
-                QuestionState.InProcess => "In Process",
+                QuestionState.Pending => "Pending",
                 QuestionState.Resolved => "Resolved",
                 QuestionState.Closed => "Closed",
-                _ => "In Process"
+                _ => "Pending"
             };
         }
     }

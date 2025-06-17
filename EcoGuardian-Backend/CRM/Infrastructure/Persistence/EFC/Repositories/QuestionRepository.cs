@@ -20,6 +20,12 @@ namespace EcoGuardian_Backend.CRM.Infrastructure.Persistence.EFC.Repositories
             .Where(q => q.Id == questionId)
             .FirstOrDefaultAsync();
         }
+        public async Task<IEnumerable<Question>> GetAllQuestions()
+        {
+            return await context.Set<Question>()
+                .Include(q => q.Images)
+                .ToListAsync();
+        }
 
         public async Task<IEnumerable<Question>> GetQuestionsByPlantId(int plantId)
         {

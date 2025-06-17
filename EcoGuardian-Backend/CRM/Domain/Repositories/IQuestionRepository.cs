@@ -18,6 +18,9 @@ namespace EcoGuardian_Backend.CRM.Domain.Repositories
 
         Task<Question?> GetQuestionById(int questionId);
         Task UpdateAsync(Question question);
+
+        Task<IEnumerable<Question>> GetAllQuestions();
+
     }
 }
 

@@ -10,5 +10,6 @@ namespace EcoGuardian_Backend.CRM.Domain.Services
     {
         Task<IEnumerable<Answer>> GetAnswersByQuestionId(int questionId);
         Task<IEnumerable<Answer>> GetAnswersBySpecialistId(int userId);
+    
     }
 }
