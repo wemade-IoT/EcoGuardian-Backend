@@ -1,3 +1,8 @@
+using EcoGuardian_Backend.Analytics.Application.Internal.CommandServices;
+using EcoGuardian_Backend.Analytics.Application.Internal.QueryServices;
+using EcoGuardian_Backend.Analytics.Domain.Repositories;
+using EcoGuardian_Backend.Analytics.Domain.Services;
+using EcoGuardian_Backend.Analytics.Infrastructure.Persistence.EFC.Repositories;
 using EcoGuardian_Backend.CRM.Application.Internal.CommandServices;
 using EcoGuardian_Backend.CRM.Application.Internal.EventHandlers;
 using EcoGuardian_Backend.CRM.Application.Internal.OutboundServices;
@@ -71,6 +76,13 @@ public static class ApplicationDependencyContainer
         services.AddScoped<IOrderCommandService, OrderCommandService>();
         services.AddScoped<IOrderStateCommandService, OrderStateCommandService>();
         services.AddScoped<IOrderQueryService, OrderQueryService>();
+
+        // Analytics
+        services.AddScoped<IMetricTypeCommandService, MetricTypeCommandService>();
+        services.AddScoped<IMetricTypeRepository, MetricTypeRepository>();
+        services.AddScoped<IMetricCommandService, MetricCommandService>();
+        services.AddScoped<IMetricQueryService, MetricQueryService>();
+        services.AddScoped<IMetricRepository, MetricRepository>();
 
         // Register other application services as needed
         /*services.AddScoped<IExternalCustomerService, ExternalCustomerService>();*/
