@@ -8,6 +8,9 @@ using EcoGuardian_Backend.Planning.Domain.Repositories;
 using EcoGuardian_Backend.Planning.Infrastructure.Persistence.EFC.Repositories;
 using EcoGuardian_Backend.ProfilePreferences.Domain.Repositories;
 using EcoGuardian_Backend.ProfilePreferences.Infrastructure.Persistence.EFC.Repositories;
+using EcoGuardian_Backend.Resources.Domain.Model.Aggregates;
+using EcoGuardian_Backend.Resources.Domain.Repositories;
+using EcoGuardian_Backend.Resources.Infrastructure.Persistence.EFC.Repositories;
 using EcoGuardian_Backend.Shared.Domain.Repositories;
 using EcoGuardian_Backend.Shared.Infrastructure.Persistence.EFC.Configuration;
 using EcoGuardian_Backend.Shared.Infrastructure.Persistence.EFC.Repositories;
@@ -39,6 +42,7 @@ public static class InfrastructureDependencyContainer
         services.AddScoped<IOrderRepository, OrderRepository>();
         services.AddScoped<IOrderStateRepository, OrderStateRepository>();
         services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+        services.AddScoped<IDeviceRepository, DeviceRepository>();
 
         services.AddDbContext<AppDbContext>(db =>
         {

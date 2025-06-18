@@ -1,4 +1,4 @@
-using EcoGuardian_Backend.Resources.Domain.Model.Entities;
+using EcoGuardian_Backend.Resources.Domain.Model.Aggregates;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -13,7 +13,7 @@ public class DeviceConfigurationBuilder : IEntityTypeConfiguration<Device>
         builder.Property(d => d.Id).ValueGeneratedOnAdd();
         builder.Property(d => d.DeviceId).IsRequired().HasMaxLength(100);
         builder.Property(d => d.ApiKey).IsRequired().HasMaxLength(100);
+        builder.Property(d => d.ConsumerId).IsRequired();
         builder.HasIndex(d => d.DeviceId).IsUnique();
     }
 }
-
