@@ -1,0 +1,27 @@
+﻿services:
+  ecoguardian-backend:
+    image: ecoguardian-backend
+    build:
+      context: .
+      dockerfile: EcoGuardian-Backend/Dockerfile
+    ports:
+      - "9080:9080"
+    container_name: 
+        ecoguardian-backend
+    restart: 
+      always
+    depends_on:
+      - ecoguardian-db
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+  ecoguardian-db:
+    image: mysql
+    container_name: 
+        ecoguardian-db
+    environment:
+        MYSQL_ROOT_PASSWORD: 12345678
+        MYSQL_DATABASE: ecoguardian-db
+    ports:
+        - "3406:3306"
+    restart:
+      always
