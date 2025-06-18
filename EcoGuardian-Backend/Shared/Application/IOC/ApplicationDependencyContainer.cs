@@ -34,6 +34,8 @@ using EcoGuardian_Backend.CRM.Application.Internal.OutboundServices;
 using EcoGuardian_Backend.ProfilePreferences.Application.Internal.CommandServices;
 using EcoGuardian_Backend.ProfilePreferences.Application.Internal.QueryServices;
 using EcoGuardian_Backend.ProfilePreferences.Domain.Services;
+using EcoGuardian_Backend.Resources.Domain.Repositories;
+using EcoGuardian_Backend.Resources.Infrastructure.Persistence.EFC.Repositories;
 
 namespace EcoGuardian_Backend.Shared.Application.IOC;
 
@@ -87,7 +89,7 @@ public static class ApplicationDependencyContainer
         services.AddScoped<IMetricCommandService, MetricCommandService>();
         services.AddScoped<IMetricQueryService, MetricQueryService>();
         services.AddScoped<IMetricRepository, MetricRepository>();
-
+        services.AddScoped<IDeviceRepository, DeviceRepository>();
         // Register other application services as needed
         /*services.AddScoped<IExternalCustomerService, ExternalCustomerService>();*/
 
