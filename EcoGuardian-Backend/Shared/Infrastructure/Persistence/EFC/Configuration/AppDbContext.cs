@@ -24,6 +24,7 @@ public class AppDbContext(DbContextOptions options) : DbContext(options)
         modelBuilder.ApplyConfiguration(new OrderStateConfigurationBuilder());
         modelBuilder.ApplyConfiguration(new MetricConfigurationBuilder());
         modelBuilder.ApplyConfiguration(new MetricTypeConfigurationBuilder());
+        modelBuilder.ApplyConfiguration(new ProfileConfigurationBuilder());
         modelBuilder.UseSnakeCaseWithPluralizedTableNamingConvention();
     }
 

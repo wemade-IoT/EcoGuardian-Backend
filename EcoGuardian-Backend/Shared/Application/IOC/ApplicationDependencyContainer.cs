@@ -58,8 +58,9 @@ public static class ApplicationDependencyContainer
 
         // External User Service for CRM
         services.AddScoped<IExternalUserServiceCRM, ExternalUserServiceCRM>();
-
-
+        
+        services.AddScoped<IProfileCommandService, ProfileCommandService>();
+        services.AddScoped<IProfileQueryService, ProfileQueryService>();
 
 
         // EventHandler
