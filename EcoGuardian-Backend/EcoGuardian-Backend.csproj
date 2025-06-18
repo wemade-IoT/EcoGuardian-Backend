@@ -9,11 +9,14 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
         <PackageReference Include="Humanizer" Version="2.14.1" />
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.13"/>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.13" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.16" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.16" />
+        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
         <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.3" />
+        <PackageReference Include="Stripe.net" Version="48.2.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2"/>
     </ItemGroup>
 
@@ -27,41 +30,30 @@
       <Folder Include="Analytics\Interfaces\REST\Resources\" />
       <Folder Include="Analytics\Interfaces\REST\Transform\" />
       <Folder Include="OperationAndMonitoring\Application\Internal\OutboundServices\" />
+        <Folder Include="Resources\Application\Internal\CommandServices\" />
+        <Folder Include="Resources\Application\Internal\Events\" />
+        <Folder Include="Resources\Application\Internal\QueryServices\" />
+        <Folder Include="Resources\Domain\Model\Aggregates\" />
+        <Folder Include="Resources\Domain\Model\Commands\" />
+        <Folder Include="Resources\Domain\Model\Entities\" />
+        <Folder Include="Resources\Domain\Model\Queries\" />
+        <Folder Include="Resources\Domain\Services\" />
+        <Folder Include="Resources\Domain\Repositories\" />
+        <Folder Include="Resources\Infrastructure\Persistence\EFC\Repositories\" />
+        <Folder Include="Resources\Infrastructure\Pipeline\Middleware\Components\" />
+        <Folder Include="Resources\Infrastructure\Pipeline\Middleware\Extensions\" />
+        <Folder Include="Resources\Interfaces\REST\Resources\" />
+        <Folder Include="Resources\Interfaces\REST\Transform\" />
+      <Folder Include="SubscriptionsAndPayment\Application\External\" />
+      <Folder Include="SubscriptionsAndPayment\Application\External\OutboundServices\" />
+      <Folder Include="SubscriptionsAndPayment\Infrastructure\IAM\" />
+      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.12.0" />
     </ItemGroup>
 
     <ItemGroup>
       <Content Include="..\.dockerignore">
         <Link>.dockerignore</Link>
       </Content>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Compile Remove="OperationAndMonitoring\Application\Internal\OutboundServices\IExternalUserService.cs" />
-      <Compile Remove="OperationAndMonitoring\Interfaces\ACL\IMonitorinContextFacade.cs" />
-      <Compile Remove="OperationAndMonitoring\Domain\Model\Queries\GetPlantByIdQuery.cs" />
-      <Compile Remove="Shared\Infrastructure\Persistence\EFC\Configuration\Builders\UserRoleConfigurationBuilder.cs" />
-      <Compile Remove="Shared\Infrastructure\Persistence\EFC\Configuration\Builders\UserConfigurationBuilder.cs" />
-      <Compile Remove="Shared\Interfaces\Filters\AuthorizeFilterAttribute.cs" />
-      <Compile Remove="obj\Debug\net8.0\EcoGuardian-Backend.MvcApplicationPartsAssemblyInfo.cs" />
-      <Compile Remove="IAM\Infrastructure\Persistence\EFC\Respositories\UserRoleRepository.cs" />
-      <Compile Remove="IAM\Infrastructure\Pipeline\Middleware\Attributes\AllowAnonymousAttribute.cs" />
-      <Compile Remove="IAM\Application\Internal\CommandServices\UserCommandService.cs" />
-      <Compile Remove="IAM\Interfaces\REST\AuthenticationController.cs" />
-      <Compile Remove="IAM\Interfaces\REST\Transform\AuthenticatedUserResourceFromEntityAssembler.cs" />
-      <Compile Remove="IAM\Interfaces\REST\Transform\SignUpCommandFromResourceAssembler.cs" />
-      <Compile Remove="IAM\Interfaces\REST\Resources\SignUpResource.cs" />
-      <Compile Remove="IAM\Interfaces\ACL\IIamContextFacade.cs" />
-      <Compile Remove="IAM\Domain\Respositories\IUserRoleRepository.cs" />
-      <Compile Remove="IAM\Domain\Services\IUserCommandService.cs" />
-      <Compile Remove="IAM\Domain\Services\IRoleCommandService.cs" />
-      <Compile Remove="IAM\Domain\Model\Commands\SeedUserRolesCommand.cs" />
-      <Compile Remove="IAM\Domain\Model\Commands\UpdateRoleCommand.cs" />
-      <Compile Remove="IAM\Domain\Model\Commands\SignUpCommand.cs" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Shared\Application\Internal\EventHandler\" />
-      <Folder Include="Shared\Interfaces\Filters\" />
     </ItemGroup>
 
 </Project>

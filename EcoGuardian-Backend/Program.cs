@@ -43,6 +43,7 @@ if (app.Environment.IsDevelopment())
 }
 app.UseCors("AllowAllOrigins");
 app.UseHttpsRedirection();
+app.UseDeviceAuthorization(); 
 app.MapControllers();
 app.UseRequestAuthorization();
 
