@@ -3,7 +3,6 @@ using EcoGuardian_Backend.OperationAndMonitoring.Domain.Model.Queries;
 using EcoGuardian_Backend.OperationAndMonitoring.Domain.Services;
 using EcoGuardian_Backend.OperationAndMonitoring.Interfaces.REST.Resources;
 using EcoGuardian_Backend.OperationAndMonitoring.Interfaces.REST.Transform;
-using EcoGuardian_Backend.Shared.Interfaces.Filters;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EcoGuardian_Backend.OperationAndMonitoring.Interfaces.REST;
@@ -17,7 +16,6 @@ public class PlantController(IPlantCommandService plantCommandService, IPlantQue
 {
     [HttpPost]
     [ProducesResponseType(201)]
-    [AuthorizeFilter("Admin", "Domestic", "Business")]
     public async Task<IActionResult> CreatePlant([FromBody] CreatePlantResource resource)
     {
         var command = CreatePlantCommandFromResourceAssembler.ToCommandFromResource(resource);
@@ -27,7 +25,6 @@ public class PlantController(IPlantCommandService plantCommandService, IPlantQue
     
     [HttpPut("{id:int}")]
     [ProducesResponseType(200)]
-    [AuthorizeFilter("Admin", "Domestic", "Business")]
     public async Task<IActionResult> UpdatePlant([FromBody] UpdatePlantResource resource, [FromRoute] int id)
     {
         var command = UpdatePlantCommandFromResourceAssembler.ToCommandFromResource(id,resource);
@@ -37,7 +34,6 @@ public class PlantController(IPlantCommandService plantCommandService, IPlantQue
     
     [HttpDelete("{id:int}")]
     [ProducesResponseType(200)]
-    [AuthorizeFilter("Admin", "Domestic", "Business")]
     public async Task<IActionResult> DeletePlant([FromRoute] int id)
     {
         var command = DeletePlantCommandFromResourceAssembler.ToCommandFromResource(id);
@@ -47,7 +43,6 @@ public class PlantController(IPlantCommandService plantCommandService, IPlantQue
     
     [HttpGet]
     [ProducesResponseType(200)]
-    [AuthorizeFilter("Admin", "Domestic", "Business", "Specialist")]
     public async Task<IActionResult> GetPlantsByUserId([FromQuery] int userId)
     {
         var query = new GetPlantsByUserIdQuery(userId);
