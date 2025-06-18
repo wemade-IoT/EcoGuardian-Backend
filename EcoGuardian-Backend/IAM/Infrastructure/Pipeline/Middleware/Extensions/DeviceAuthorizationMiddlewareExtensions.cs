@@ -1,4 +1,3 @@
-/*
 using EcoGuardian_Backend.IAM.Infrastructure.Pipeline.Middleware.Components;
 
 namespace EcoGuardian_Backend.IAM.Infrastructure.Pipeline.Middleware.Extensions;
@@ -10,5 +9,4 @@ public static class DeviceAuthorizationMiddlewareExtensions
         return builder.UseMiddleware<DeviceAuthorizationMiddleware>();
     }
 }
-*/
 

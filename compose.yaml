@@ -12,7 +12,8 @@
       always
     depends_on:
       - ecoguardian-db
-    
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
   ecoguardian-db:
     image: mysql
     container_name: 
