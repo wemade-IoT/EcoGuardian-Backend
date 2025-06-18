@@ -17,12 +17,13 @@ namespace EcoGuardian_Backend.CRM.Application.Internal.QueryServices
             try
             {
                 var question = await questionRepository.GetQuestionById(questionId);
-                if(question == null)
+                if (question == null)
                 {
                     throw new KeyNotFoundException($"Question with ID {questionId} not found.");
                 }
                 return question;
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 // Log the exception (not implemented here)
                 throw new Exception($"An error occurred while retrieving the question with ID {questionId}: {ex.Message}", ex);
@@ -85,6 +86,24 @@ namespace EcoGuardian_Backend.CRM.Application.Internal.QueryServices
                 throw new Exception($"An error occurred while retrieving questions for User ID {userId}: {ex.Message}", ex);
             }
 
+        }
+
+        public async Task<IEnumerable<Question>> GetAllQuestions()
+        {
+            try
+            {
+                var questions = await questionRepository.GetAllQuestions();
+                if (questions == null || !questions.Any())
+                {
+                    throw new KeyNotFoundException("No questions found.");
+                }
+                return questions;
+            }
+            catch (Exception ex)
+            {
+                // Log the exception (not implemented here)
+                throw new Exception($"An error occurred while retrieving all questions: {ex.Message}", ex);
+            }
         }
     }
 }

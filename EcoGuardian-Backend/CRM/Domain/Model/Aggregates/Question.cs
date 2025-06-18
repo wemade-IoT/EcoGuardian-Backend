@@ -12,7 +12,7 @@ public class Question
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public DateTime? UpdatedAt { get; set; } = DateTime.UtcNow;    public int UserId { get; set; }
     public int PlantId { get; set; }
-    public QuestionState State { get; set; } = QuestionState.InProcess;
+    public QuestionState State { get; set; } = QuestionState.Pending;
     
     // Navigation property para las imágenes
     public virtual ICollection<QuestionImage> Images { get; set; } = new List<QuestionImage>();

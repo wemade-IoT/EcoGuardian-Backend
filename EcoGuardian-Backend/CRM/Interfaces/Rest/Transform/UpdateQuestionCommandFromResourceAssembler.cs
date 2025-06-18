@@ -10,7 +10,7 @@ namespace EcoGuardian_Backend.CRM.Interfaces.Rest.Transform
             // Direct cast since QuestionState enum has explicit int values (1,2,3)
             var questionState = Enum.IsDefined(typeof(QuestionState), resource.Status)
                 ? (QuestionState)resource.Status
-                : QuestionState.InProcess;
+                : QuestionState.Pending;
             
             return new UpdateQuestionCommand(
                 QuestionId: resource.QuestionId,
