@@ -1,3 +1,4 @@
+/*
 using EcoGuardian_Backend.Resources.Domain.Repositories;
 
 namespace EcoGuardian_Backend.IAM.Infrastructure.Pipeline.Middleware.Components;
@@ -30,4 +31,5 @@ public class DeviceAuthorizationMiddleware(RequestDelegate next)
         await next(context);
     }
 }
+*/
 
