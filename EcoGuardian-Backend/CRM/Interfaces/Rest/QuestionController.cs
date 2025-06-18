@@ -132,7 +132,10 @@ namespace EcoGuardian_Backend.CRM.Interfaces.Rest
             var questions = await questionQueryService.GetAllQuestions();
             if (questions == null || !questions.Any())
             {
-                return NotFound();
+                //empty list
+                // show message that there are no questions in the response
+                Console.WriteLine("No questions found.");
+                return Ok(new List<QuestionResource>());
             }
             var questionsResource = questions.Select(QuestionResourceFromEntityAssembler.ToResourceFromEntity).ToList();
             return Ok(questionsResource);

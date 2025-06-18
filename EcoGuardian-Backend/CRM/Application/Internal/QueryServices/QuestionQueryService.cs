@@ -95,13 +95,15 @@ namespace EcoGuardian_Backend.CRM.Application.Internal.QueryServices
                 var questions = await questionRepository.GetAllQuestions();
                 if (questions == null || !questions.Any())
                 {
-                    throw new KeyNotFoundException("No questions found.");
+                    // throw an empty list
+                    return new List<Question>();
+
                 }
                 return questions;
             }
             catch (Exception ex)
             {
-                // Log the exception (not implemented here)
+                //return an empty list
                 throw new Exception($"An error occurred while retrieving all questions: {ex.Message}", ex);
             }
         }
