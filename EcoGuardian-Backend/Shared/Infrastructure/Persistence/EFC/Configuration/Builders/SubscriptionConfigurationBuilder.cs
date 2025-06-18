@@ -1,3 +1,4 @@
+using EcoGuardian_Backend.IAM.Domain.Model.Aggregates;
 using EcoGuardian_Backend.SubscriptionsAndPayment.Domain.Model.Aggregates;
 using EcoGuardian_Backend.SubscriptionsAndPayment.Domain.Model.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +13,6 @@ public class SubscriptionConfigurationBuilder: IEntityTypeConfiguration<Subscrip
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id)
             .ValueGeneratedOnAdd();
-        // cambiar cuando existe un User agregado
         builder.Property(x => x.UserId)
             .IsRequired();
         builder.Property(x => x.SubscriptionTypeId)
@@ -30,5 +30,8 @@ public class SubscriptionConfigurationBuilder: IEntityTypeConfiguration<Subscrip
             .IsRequired();
         builder.HasOne<SubscriptionState>().WithMany().HasForeignKey(x => x.SubscriptionStateId);
         builder.HasOne<SubscriptionType>().WithMany().HasForeignKey(x => x.SubscriptionTypeId);
+        builder.HasOne<User>()
+            .WithMany()
+            .HasForeignKey(x => x.UserId);
     }
 }

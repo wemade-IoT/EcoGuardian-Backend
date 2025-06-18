@@ -4,10 +4,13 @@ using EcoGuardian_Backend.Shared.Infrastructure.IOC;
 using EcoGuardian_Backend.Shared.Infrastructure.Persistence.EFC.Configuration;
 using EcoGuardian_Backend.Shared.Interfaces.IOC;
 using EcoGuardian_Backend.Shared.Application.Internal.EventHandler;
+using Stripe;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var configuration = builder.Configuration;
+StripeConfiguration.ApiKey = builder.Configuration["Stripe:ApiKey"];
+
 
 builder.Services.AddInfrastructureDependencies(builder, configuration);
 builder.Services.AddApplicationDependencies();

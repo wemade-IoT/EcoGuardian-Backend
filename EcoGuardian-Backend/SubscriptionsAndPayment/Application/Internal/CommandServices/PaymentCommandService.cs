@@ -48,17 +48,14 @@ public class PaymentCommandService(
         {
             Amount = amountInCents,
             Currency = command.Currency,
-            PaymentMethod = command.PaymentMethodId,
-            ConfirmationMethod = "auto",
-            Confirm = true,
-            OffSession = true
+            ConfirmationMethod = "automatic",
         };
 
         // Configura la clave de API de Stripe
         var service = new PaymentIntentService();
         PaymentIntent paymentIntent = await service.CreateAsync(options);
 
-        return paymentIntent.Id;
+        return paymentIntent.ClientSecret;
     }
 
     public async Task<string> Handle(ConfirmPaymentIntentCommand command)

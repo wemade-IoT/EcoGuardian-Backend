@@ -1,3 +1,5 @@
+using System.Net.Mime;
+using EcoGuardian_Backend.IAM.Infrastructure.Pipeline.Middleware.Attributes;
 using EcoGuardian_Backend.SubscriptionsAndPayment.Domain.Model.Queries;
 using EcoGuardian_Backend.SubscriptionsAndPayment.Domain.Services;
 using EcoGuardian_Backend.SubscriptionsAndPayment.Interfaces.REST.Resources;
@@ -6,25 +8,32 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EcoGuardian_Backend.SubscriptionsAndPayment.Interfaces.REST;
 
+[Authorize]
 [ApiController]
-[ProducesResponseType(500)]
 [Route("api/v1/[controller]")]
+[Produces(MediaTypeNames.Application.Json)]
 public class SubscriptionController(
     ISubscriptionCommandService subscriptionCommandService,
     ISubscriptionQueryService subscriptionQueryService)
     : ControllerBase
 {
     [HttpPost]
-    [ProducesResponseType(201)]
+    [AllowAnonymous]
     public async Task<IActionResult> CreatePayment([FromBody] CreateSubscriptionResource resource)
     {
         var command = CreateSubscriptionCommandFromResourceAssembler.ToCommandFromResource(resource);
-        await subscriptionCommandService.Handle(command);
-        return StatusCode(201, true);
+        var subscription = await subscriptionCommandService.Handle(command);
+        if (subscription == null)
+        {
+            return BadRequest("Failed to create subscription.");
+        }
+
+        var subscriptionResource = SubscriptionResourceFromEntityAssembler.ToResourceFromEntity(subscription);
+        return Ok(subscriptionResource);
     }
 
     [HttpGet]
-    [ProducesResponseType(200)]
+    [AllowAnonymous]
     public async Task<IActionResult> GetAllSubscriptions()
     {
         var query = new GetAllSubscriptions();
@@ -34,7 +43,7 @@ public class SubscriptionController(
     }
 
     [HttpGet("user/{userId:int}")]
-    [ProducesResponseType(200)]
+    [AllowAnonymous]
     public async Task<IActionResult> GetSubscriptionByUserId([FromRoute] int userId)
     {
         var query = new GetSubscriptionByUserIdQuery(userId);
@@ -45,7 +54,7 @@ public class SubscriptionController(
     }
 
     [HttpGet("id/{subscriptionId:int}")]
-    [ProducesResponseType(200)]
+    [AllowAnonymous]
     public async Task<IActionResult> GetSubscriptionById([FromRoute] int subscriptionId)
     {
         var query = new GetSubscriptionById(subscriptionId);

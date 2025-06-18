@@ -1,3 +1,4 @@
+using EcoGuardian_Backend.Shared.Interfaces.Helpers;
 using EcoGuardian_Backend.SubscriptionsAndPayment.Domain.Model.Commands;
 using EcoGuardian_Backend.SubscriptionsAndPayment.Domain.Model.ValueObjects;
 
@@ -51,6 +52,8 @@ public class Payment
         UserId = command.UserId;
         ReferenceId = command.ReferenceId;
         ReferenceType = command.ReferenceType;
+        CreatedAt = DateTimeConverterHelper.ToNormalizeFormat(DateTime.UtcNow);
+        UpdatedAt = null;
     }
 
     public Payment(CreatePaymentIntentCommand command)
