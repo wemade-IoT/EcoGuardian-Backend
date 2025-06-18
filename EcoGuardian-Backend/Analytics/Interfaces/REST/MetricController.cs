@@ -35,5 +35,15 @@ public class MetricController(IMetricCommandService metricCommandService, IMetri
         var resources = metrics.Select(MetricResourceFromEntityAssembler.ToResourceFromEntity).ToList();
         return Ok(resources);
     }
-}
 
+    [HttpGet("by-device-and-type")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [AuthorizeFilter("Admin", "Domestic", "Business", "Specialist")]
+    public async Task<IActionResult> GetMetricsByDeviceIdAndMetricTypeId([FromQuery] int deviceId, [FromQuery] int metricTypeId)
+    {
+        var query = new GetMetricsByDeviceIdAndMetricTypeIdQuery(deviceId, metricTypeId);
+        var metrics = await metricQueryService.Handle(query);
+        var resources = metrics.Select(MetricResourceFromEntityAssembler.ToResourceFromEntity).ToList();
+        return Ok(resources);
+    }
+}

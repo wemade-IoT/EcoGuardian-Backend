@@ -6,4 +6,5 @@ namespace EcoGuardian_Backend.Analytics.Domain.Services;
 public interface IMetricQueryService
 {
     Task<IEnumerable<Metric>> Handle(GetMetricsByDeviceIdQuery query);
+    Task<IEnumerable<Metric>> Handle(GetMetricsByDeviceIdAndMetricTypeIdQuery query);
 }

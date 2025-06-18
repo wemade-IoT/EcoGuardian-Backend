@@ -11,5 +11,9 @@ public class MetricQueryService(IMetricRepository metricRepository) : IMetricQue
     {
         return await metricRepository.GetMetricsByDeviceIdAsync(query.DeviceId);
     }
-}
 
+    public async Task<IEnumerable<Metric>> Handle(GetMetricsByDeviceIdAndMetricTypeIdQuery query)
+    {
+        return await metricRepository.GetMetricsByDeviceIdAndMetricTypeIdAsync(query.DeviceId, query.MetricTypeId);
+    }
+}

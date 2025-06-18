@@ -14,5 +14,11 @@ public class MetricRepository(AppDbContext context) : BaseRepository<Metric>(con
             .Where(x => x.DeviceId == deviceId)
             .ToListAsync();
     }
-}
 
+    public async Task<IEnumerable<Metric>> GetMetricsByDeviceIdAndMetricTypeIdAsync(int deviceId, int metricTypeId)
+    {
+        return await context.Set<Metric>()
+            .Where(x => x.DeviceId == deviceId && x.MetricTypesId == metricTypeId)
+            .ToListAsync();
+    }
+}
