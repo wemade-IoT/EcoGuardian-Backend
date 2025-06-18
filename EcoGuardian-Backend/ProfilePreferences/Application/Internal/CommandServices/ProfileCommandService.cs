@@ -1,6 +1,5 @@
 using EcoGuardian_Backend.ProfilePreferences.Domain.Model.Aggregates;
 using EcoGuardian_Backend.ProfilePreferences.Domain.Model.Commands;
-using EcoGuardian_Backend.ProfilePreferences.Domain.Model.Services;
 using EcoGuardian_Backend.ProfilePreferences.Domain.Repositories;
 using EcoGuardian_Backend.ProfilePreferences.Domain.Services;
 using EcoGuardian_Backend.Shared.Domain.Repositories;

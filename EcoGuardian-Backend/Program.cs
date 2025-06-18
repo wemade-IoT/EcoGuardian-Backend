@@ -1,18 +1,17 @@
-using EcoGuardian_Backend.OperationAndMonitoring.Application.Internal.EventHandlers;
+using EcoGuardian_Backend.IAM.Infrastructure.Pipeline.Middleware.Extensions;
 using EcoGuardian_Backend.Shared.Application.IOC;
 using EcoGuardian_Backend.Shared.Infrastructure.IOC;
 using EcoGuardian_Backend.Shared.Infrastructure.Persistence.EFC.Configuration;
 using EcoGuardian_Backend.Shared.Interfaces.IOC;
+using EcoGuardian_Backend.Shared.Application.Internal.EventHandler;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var configuration = builder.Configuration;
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 builder.Services.AddInfrastructureDependencies(builder, configuration);
 builder.Services.AddApplicationDependencies();
-builder.Services.AddInterfaceDependencies(builder, configuration);
+builder.Services.AddInterfaceDependencies(builder);
 
 builder.WebHost.ConfigureKestrel(options =>
 {
@@ -20,10 +19,8 @@ builder.WebHost.ConfigureKestrel(options =>
 });
 
 
+
 var app = builder.Build();
-
-
-
 
 
 using (var scope = app.Services.CreateScope())
@@ -31,7 +28,7 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
     var context = services.GetRequiredService<AppDbContext>();
     context.Database.EnsureCreated();
-    services.On();
+    services.OnStart();
 }
 
 
@@ -41,11 +38,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors("AllowAllOrigins");
 app.UseHttpsRedirection();
 app.MapControllers();
-app.UseCors("AllowAllOrigins");
-
+app.UseRequestAuthorization();
 
 app.Run();
 
