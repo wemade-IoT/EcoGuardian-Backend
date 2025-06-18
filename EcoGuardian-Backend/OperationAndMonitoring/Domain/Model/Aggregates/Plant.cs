@@ -63,10 +63,5 @@ public class Plant
         WellnessStateId = command.WellnessStateId;
         
     }
-
-    public void UpdateState(UpdatePlantStateCommand command)
-    {
-        WellnessStateId = command.StateId;
-    }
     
 }
