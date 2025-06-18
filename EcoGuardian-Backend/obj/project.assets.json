@@ -2533,19 +2533,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/manuelpena/.nuget/packages/": {}
+    "/Users/manuel/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/manuelpena/Documents/GitHub/IoT/EcoGuardian-Backend/EcoGuardian-Backend/EcoGuardian-Backend.csproj",
+      "projectUniqueName": "/Users/manuel/Documents/GitHub/IoT/EcoGuardian-Backend/EcoGuardian-Backend/EcoGuardian-Backend.csproj",
       "projectName": "EcoGuardian-Backend",
-      "projectPath": "/Users/manuelpena/Documents/GitHub/IoT/EcoGuardian-Backend/EcoGuardian-Backend/EcoGuardian-Backend.csproj",
-      "packagesPath": "/Users/manuelpena/.nuget/packages/",
-      "outputPath": "/Users/manuelpena/Documents/GitHub/IoT/EcoGuardian-Backend/EcoGuardian-Backend/obj/",
+      "projectPath": "/Users/manuel/Documents/GitHub/IoT/EcoGuardian-Backend/EcoGuardian-Backend/EcoGuardian-Backend.csproj",
+      "packagesPath": "/Users/manuel/.nuget/packages/",
+      "outputPath": "/Users/manuel/Documents/GitHub/IoT/EcoGuardian-Backend/EcoGuardian-Backend/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/manuelpena/.nuget/NuGet/NuGet.Config"
+        "/Users/manuel/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -2618,7 +2618,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.303/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/Users/manuel/.dotnet/sdk/8.0.411/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
