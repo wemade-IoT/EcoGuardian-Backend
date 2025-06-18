@@ -3,6 +3,7 @@ using EcoGuardian_Backend.Analytics.Domain.Model.Queries;
 using EcoGuardian_Backend.Analytics.Domain.Services;
 using EcoGuardian_Backend.Analytics.Interfaces.REST.Resources;
 using EcoGuardian_Backend.Analytics.Interfaces.REST.Transform;
+using EcoGuardian_Backend.IAM.Infrastructure.Pipeline.Middleware.Attributes;
 using EcoGuardian_Backend.Shared.Interfaces.Filters;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,7 +17,7 @@ public class MetricController(IMetricCommandService metricCommandService, IMetri
 {
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
-    [AuthorizeFilter("Admin", "Domestic", "Business", "Specialist")]
+    [AllowAnonymous]
     public async Task<IActionResult> CreateMetric([FromBody] CreateMetricResource resource)
     {
         var command = CreateMetricCommandFromResourceAssembler.ToCommandFromResource(resource);
