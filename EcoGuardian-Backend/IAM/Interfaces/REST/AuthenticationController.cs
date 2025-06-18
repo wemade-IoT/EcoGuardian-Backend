@@ -45,7 +45,11 @@ public class AuthenticationController(IUserCommandService userCommandService) : 
     public async Task<IActionResult> SignUp([FromBody] SignUpResource signUpResource)
     {
         var signUpCommand = SignUpCommandFromResourceAssembler.ToCommandFromResource(signUpResource);
-        await userCommandService.Handle(signUpCommand);
-        return Ok(new { message = "User created successfully"});
+        var user =  await userCommandService.Handle(signUpCommand);
+        if (user == null)
+        {
+            return BadRequest("User creation failed.");
+        }
+        return Ok(new { message = "Usuario creado correctamente", userId = user.Id });
     }
 }

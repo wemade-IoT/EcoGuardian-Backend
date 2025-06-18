@@ -1,3 +1,4 @@
+using EcoGuardian_Backend.IAM.Domain.Model.Aggregates;
 using EcoGuardian_Backend.SubscriptionsAndPayment.Domain.Model.Aggregates;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -30,5 +31,9 @@ public class PaymentConfigurationBuilder : IEntityTypeConfiguration<Payment>
             .IsRequired();
         builder.Property(x => x.CreatedAt);
         builder.Property(x => x.UpdatedAt);
+
+        builder.HasOne<User>()
+            .WithMany()
+            .HasForeignKey(x => x.UserId);
     }
 }
