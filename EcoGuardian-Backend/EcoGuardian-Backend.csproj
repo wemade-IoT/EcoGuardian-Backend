@@ -33,10 +33,6 @@
         <Folder Include="Resources\Application\Internal\CommandServices\" />
         <Folder Include="Resources\Application\Internal\Events\" />
         <Folder Include="Resources\Application\Internal\QueryServices\" />
-        <Folder Include="Resources\Domain\Model\Commands\" />
-        <Folder Include="Resources\Domain\Model\Entities\" />
-        <Folder Include="Resources\Domain\Model\Queries\" />
-        <Folder Include="Resources\Domain\Services\" />
         <Folder Include="Resources\Domain\Repositories\" />
         <Folder Include="Resources\Infrastructure\Persistence\EFC\Repositories\" />
         <Folder Include="Resources\Infrastructure\Pipeline\Middleware\Components\" />
