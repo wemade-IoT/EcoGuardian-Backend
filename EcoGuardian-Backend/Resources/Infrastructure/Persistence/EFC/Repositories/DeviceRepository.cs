@@ -14,25 +14,14 @@ public class DeviceRepository : IDeviceRepository, IBaseRepository<Device>
         _context = context;
     }
 
-    public async Task<Device?> FindByDeviceIdAsync(string deviceId)
+    public async Task<Device?> GetByIdAsync(int id)
     {
-        return await _context.Set<Device>().FirstOrDefaultAsync(d => d.DeviceId == deviceId);
-    }
-
-    public async Task<bool> ValidateApiKeyAsync(string deviceId, string apiKey)
-    {
-        var device = await FindByDeviceIdAsync(deviceId);
-        return device != null && device.ApiKey == apiKey;
+        return await _context.Set<Device>().FindAsync(id);
     }
 
     public async Task<IEnumerable<Device>> GetAllAsync()
     {
         return await _context.Set<Device>().ToListAsync();
-    }
-
-    public async Task<Device?> GetByIdAsync(int id)
-    {
-        return await _context.Set<Device>().FindAsync(id);
     }
 
     public async Task<bool> AddAsync(Device entity)
