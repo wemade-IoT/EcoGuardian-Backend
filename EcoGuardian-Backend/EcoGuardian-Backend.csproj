@@ -37,8 +37,6 @@
         <Folder Include="Resources\Infrastructure\Persistence\EFC\Repositories\" />
         <Folder Include="Resources\Infrastructure\Pipeline\Middleware\Components\" />
         <Folder Include="Resources\Infrastructure\Pipeline\Middleware\Extensions\" />
-        <Folder Include="Resources\Interfaces\REST\Resources\" />
-        <Folder Include="Resources\Interfaces\REST\Transform\" />
       <Folder Include="SubscriptionsAndPayment\Application\External\" />
       <Folder Include="SubscriptionsAndPayment\Application\External\OutboundServices\" />
       <Folder Include="SubscriptionsAndPayment\Infrastructure\IAM\" />
