@@ -21,19 +21,13 @@ public class DeviceCommandService : IDeviceCommandService
 
     public async Task Handle(CreateDeviceCommand command)
     {
-        var allDevices = await _baseRepository.GetAllAsync();
-        int nextNumber = allDevices.Count() + 1;
-        string apiKey = $"testkey{nextNumber.ToString("D3")}";
-
         var device = new Device
         {
-            DeviceId = command.DeviceId,
-            ConsumerId = command.ConsumerId,
-            ApiKey = apiKey
+            Type = command.Type,
+            ConsumerId = command.ConsumerId
         };
 
         await _baseRepository.AddAsync(device);
         await _unitOfWork.CompleteAsync();
     }
 }
-
