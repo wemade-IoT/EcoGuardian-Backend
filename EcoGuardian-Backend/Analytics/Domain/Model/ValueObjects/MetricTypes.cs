@@ -8,7 +8,8 @@ public enum MetricTypes
     Humidity = 1,
     [Description("Light")]
     Light = 2,
-    [Description("Water")]
-    Water = 3
+    [Description("WaterConsumption")]
+    WaterConsumption = 3,
+    [Description("EnergyConsumption")]
+    EnergyConsumption = 4
 }
-

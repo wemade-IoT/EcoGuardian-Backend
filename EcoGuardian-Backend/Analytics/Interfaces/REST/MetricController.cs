@@ -46,4 +46,36 @@ public class MetricController(IMetricCommandService metricCommandService, IMetri
         var resources = metrics.Select(MetricResourceFromEntityAssembler.ToResourceFromEntity).ToList();
         return Ok(resources);
     }
+
+    [HttpGet("latest")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [AuthorizeFilter("Admin", "Domestic", "Business", "Specialist")]
+    public async Task<IActionResult> GetLatestMetricByDeviceId([FromQuery] int deviceId)
+    {
+        var metric = await metricQueryService.GetLatestMetricByDeviceIdAsync(deviceId);
+        if (metric == null) return NotFound();
+        var resource = MetricResourceFromEntityAssembler.ToResourceFromEntity(metric);
+        return Ok(resource);
+    }
+
+    [HttpGet("latest/by-device-and-type")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [AuthorizeFilter("Admin", "Domestic", "Business", "Specialist")]
+    public async Task<IActionResult> GetLatestMetricByDeviceIdAndMetricTypeId([FromQuery] int deviceId, [FromQuery] int metricTypeId)
+    {
+        var metric = await metricQueryService.GetLatestMetricByDeviceIdAndMetricTypeIdAsync(deviceId, metricTypeId);
+        if (metric == null) return NotFound();
+        var resource = MetricResourceFromEntityAssembler.ToResourceFromEntity(metric);
+        return Ok(resource);
+    }
+
+    [HttpGet("last-n/by-device-and-type")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [AuthorizeFilter("Admin", "Domestic", "Business", "Specialist")]
+    public async Task<IActionResult> GetLastNMetricsByDeviceIdAndMetricTypeId([FromQuery] int deviceId, [FromQuery] int metricTypeId, [FromQuery] int n)
+    {
+        var metrics = await metricQueryService.GetLastNMetricsByDeviceIdAndMetricTypeIdAsync(deviceId, metricTypeId, n);
+        var resources = metrics.Select(MetricResourceFromEntityAssembler.ToResourceFromEntity).ToList();
+        return Ok(resources);
+    }
 }
