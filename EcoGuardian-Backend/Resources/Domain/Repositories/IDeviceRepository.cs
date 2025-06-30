@@ -6,5 +6,5 @@ namespace EcoGuardian_Backend.Resources.Domain.Repositories;
 
 public interface IDeviceRepository : IBaseRepository<Device>
 {
-    
+    Task<IEnumerable<Device>> GetByPlantIdAsync(int plantId);
 }

@@ -2,6 +2,7 @@ using EcoGuardian_Backend.ProfilePreferences.Domain.Model.Queries;
 using EcoGuardian_Backend.ProfilePreferences.Domain.Services;
 using EcoGuardian_Backend.ProfilePreferences.Interfaces.REST.Resources;
 using EcoGuardian_Backend.ProfilePreferences.Interfaces.REST.Trasform;
+using EcoGuardian_Backend.Shared.Interfaces.Filters;
 
 namespace EcoGuardian_Backend.ProfilePreferences.Interfaces.REST;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 public class ProfileController(IProfileCommandService profileCommandService, IProfileQueryService profileQueryService) : ControllerBase
 {
     [HttpPost]
+    [AuthorizeFilter("Admin", "Domestic", "Business")]
     [ProducesResponseType(201)]
     public async Task<IActionResult> CreateProfile([FromBody] CreateProfileResource resource)
     {
@@ -21,6 +23,7 @@ public class ProfileController(IProfileCommandService profileCommandService, IPr
     }
     
     [HttpPut("{id:int}")]
+    [AuthorizeFilter("Admin", "Domestic", "Business")]
     [ProducesResponseType(200)]
     public async Task<IActionResult> UpdateProfile([FromBody] UpdateProfileResource resource, [FromRoute] int id)
     {
@@ -29,6 +32,7 @@ public class ProfileController(IProfileCommandService profileCommandService, IPr
         return Ok(true);
     }
     [HttpGet]
+    [AuthorizeFilter("Admin", "Domestic", "Business")]
     [ProducesResponseType(200)]
     [ProducesResponseType(404)]
     public async Task<IActionResult> GetProfileById([FromQuery] string email)

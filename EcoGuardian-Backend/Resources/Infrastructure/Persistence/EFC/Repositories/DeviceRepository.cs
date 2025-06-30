@@ -9,5 +9,10 @@ namespace EcoGuardian_Backend.Resources.Infrastructure.Persistence.EFC.Repositor
 
 public class DeviceRepository(AppDbContext context) :BaseRepository<Device>(context), IDeviceRepository
 {
-    
+    public async Task<IEnumerable<Device>> GetByPlantIdAsync(int plantId)
+    {
+        return await context.Set<Device>()
+            .Where(d => d.PlantId == plantId)
+            .ToListAsync();
+    }
 }
