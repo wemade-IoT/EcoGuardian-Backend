@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [ProducesResponseType(500)]
-[Route("api/v1/[controller]")]
+[Route("api/v1/profiles")]
 public class ProfileController(IProfileCommandService profileCommandService, IProfileQueryService profileQueryService) : ControllerBase
 {
     [HttpPost]

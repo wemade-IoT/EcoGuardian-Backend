@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EcoGuardian_Backend.Analytics.Interfaces.REST;
 
-[Route("api/v1/metric")]
+[Route("api/v1/metrics")]
 [ApiController]
 [ProducesResponseType(500)]
 public class MetricController(IMetricCommandService metricCommandService, IMetricQueryService metricQueryService) : ControllerBase

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EcoGuardian_Backend.Resources.Interfaces.REST;
 
-[Route("api/v1/[controller]")]
+[Route("api/v1/devices")]
 [ApiController]
 [ProducesResponseType(500)]
 public class DeviceController(IDeviceCommandService deviceCommandService, IDeviceQueryService deviceQueryService) : ControllerBase

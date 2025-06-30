@@ -8,7 +8,7 @@ namespace EcoGuardian_Backend.ProfilePreferences.Interfaces.REST;
 
 [ApiController]
 [ProducesResponseType(500)]
-[Route("api/v1/[controller]")]
+[Route("api/v1/notifications")]
 public class NotificationController(INotificationQueryService notificationQueryService) : ControllerBase
 {
     [HttpGet]
