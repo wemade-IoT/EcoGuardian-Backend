@@ -93,7 +93,8 @@ namespace EcoGuardian_Backend.CRM.Interfaces.Rest
             var question = await questionQueryService.GetQuestionById(questionId);
             if (answers == null || !answers.Any() || question == null)
             {
-                return NotFound();
+                //avoid sending error 500
+                return Ok(new List<AnswerResource>());
             }
             var answersResource = answers.Select(answer => AnswerResourceFromEntityAssembler.FromEntity(answer, question)).ToList();
             return Ok(answersResource);
