@@ -9,7 +9,12 @@ public class MonitorinContextFacade(IPlantCommandService plantCommandService, IP
     public async Task<bool> CheckPlantExists(int plantId)
     {
         var query = new GetPlantByIdQuery(plantId);
-        return await plantQueryService.Handle(query);
+        var exists = await plantQueryService.Handle(query);
+        if (exists == null)
+        {
+            return false;
+        }
+        return true;
     }
 
     public void UpdatePlantState(int stateId, int plantId)
