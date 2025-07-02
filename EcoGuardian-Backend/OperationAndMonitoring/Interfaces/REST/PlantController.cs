@@ -16,9 +16,10 @@ namespace EcoGuardian_Backend.OperationAndMonitoring.Interfaces.REST;
 public class PlantController(IPlantCommandService plantCommandService, IPlantQueryService plantQueryService) : ControllerBase
 {
     [HttpPost]
+    [Consumes("multipart/form-data")]
     [ProducesResponseType(201)]
     [AuthorizeFilter("Admin", "Domestic", "Business")]
-    public async Task<IActionResult> CreatePlant([FromBody] CreatePlantResource resource)
+    public async Task<IActionResult> CreatePlant([FromForm] CreatePlantResource resource)
     {
         var command = CreatePlantCommandFromResourceAssembler.ToCommandFromResource(resource);
         await plantCommandService.Handle(command);

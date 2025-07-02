@@ -13,9 +13,10 @@ using Microsoft.AspNetCore.Mvc;
 public class ProfileController(IProfileCommandService profileCommandService, IProfileQueryService profileQueryService) : ControllerBase
 {
     [HttpPost]
+    [Consumes("multipart/form-data")]
     [AuthorizeFilter("Admin", "Domestic", "Business")]
     [ProducesResponseType(201)]
-    public async Task<IActionResult> CreateProfile([FromBody] CreateProfileResource resource)
+    public async Task<IActionResult> CreateProfile([FromForm] CreateProfileResource resource)
     {
         var command = CreateProfileCommandFromResourceAssembler.ToCommandFromResource(resource);
         await profileCommandService.Handle(command);

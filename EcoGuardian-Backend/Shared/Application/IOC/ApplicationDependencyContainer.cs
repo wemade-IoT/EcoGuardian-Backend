@@ -46,6 +46,9 @@ using EcoGuardian_Backend.Resources.Application.Internal.CommandServices;
 using EcoGuardian_Backend.Resources.Application.Internal.OutBoundServices;
 using EcoGuardian_Backend.Resources.Application.Internal.QueryServices;
 using EcoGuardian_Backend.Resources.Domain.Services;
+using EcoGuardian_Backend.Shared.Application.Internal.CloudinaryStorage;
+using EcoGuardian_Backend.Shared.Application.Internal.CloudinaryStorage.Configuration;
+using EcoGuardian_Backend.Shared.Infrastructure.Cloudinary;
 
 namespace EcoGuardian_Backend.Shared.Application.IOC;
 
@@ -110,6 +113,8 @@ public static class ApplicationDependencyContainer
 
         services.AddScoped<INotificationServiceFacade, NotificationServiceFacade>();
         services.AddScoped<IExternalNotificationService, ExternalNotificationService>();
+        services.AddScoped<ICloudinaryStorage, CloudinaryStorage>();
+        
         // Register other application services as needed
         /*services.AddScoped<IExternalCustomerService, ExternalCustomerService>();*/
 

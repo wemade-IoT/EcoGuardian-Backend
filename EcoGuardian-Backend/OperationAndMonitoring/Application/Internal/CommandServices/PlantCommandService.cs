@@ -1,13 +1,16 @@
+using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
 using EcoGuardian_Backend.OperationAndMonitoring.Application.Internal.OutboundServices;
 using EcoGuardian_Backend.OperationAndMonitoring.Domain.Model.Aggregates;
 using EcoGuardian_Backend.OperationAndMonitoring.Domain.Model.Commands;
 using EcoGuardian_Backend.OperationAndMonitoring.Domain.Repositories;
 using EcoGuardian_Backend.OperationAndMonitoring.Domain.Services;
+using EcoGuardian_Backend.Shared.Application.Internal.CloudinaryStorage;
 using EcoGuardian_Backend.Shared.Domain.Repositories;
 
 namespace EcoGuardian_Backend.OperationAndMonitoring.Application.Internal.CommandServices;
 
-public class PlantCommandService(IPlantRepository plantRepository, IExternalUserService externalUserService, IUnitOfWork unitOfWork) : IPlantCommandService
+public class PlantCommandService(IPlantRepository plantRepository, IExternalUserService externalUserService, IUnitOfWork unitOfWork, ICloudinaryStorage cloudinaryStorage) : IPlantCommandService
 {
     public async Task Handle(CreatePlantCommand command)
     {
@@ -17,6 +20,18 @@ public class PlantCommandService(IPlantRepository plantRepository, IExternalUser
             throw new BadHttpRequestException($"User with ID {command.UserId} does not exist.");
         }
         var plant = new Plant(command);
+        {
+            var imageUploadParams = new ImageUploadParams
+            {
+                File = new FileDescription(command.Image.FileName, command.Image.OpenReadStream()),
+                PublicId = $"{command.UserId}/{command.Name}",
+                Transformation = new Transformation().Width(500).Height(500).Crop("fill")
+            };
+
+            await cloudinaryStorage.UploadImage(imageUploadParams);
+            var url = await cloudinaryStorage.GetImage($"{command.UserId}/{command.Name}");
+            plant.Image = url ?? string.Empty;
+        }
         await plantRepository.AddAsync(plant);
         await unitOfWork.CompleteAsync();
 

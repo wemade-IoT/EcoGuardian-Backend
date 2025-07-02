@@ -1,13 +1,16 @@
+using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
 using EcoGuardian_Backend.ProfilePreferences.Domain.Model.Aggregates;
 using EcoGuardian_Backend.ProfilePreferences.Domain.Model.Commands;
 using EcoGuardian_Backend.ProfilePreferences.Domain.Model.Services;
 using EcoGuardian_Backend.ProfilePreferences.Domain.Repositories;
 using EcoGuardian_Backend.ProfilePreferences.Domain.Services;
+using EcoGuardian_Backend.Shared.Application.Internal.CloudinaryStorage;
 using EcoGuardian_Backend.Shared.Domain.Repositories;
 
 namespace EcoGuardian_Backend.ProfilePreferences.Application.Internal.CommandServices;
 
-public class ProfileCommandService(IProfileRepository profileRepository, IUnitOfWork unitOfWork) : IProfileCommandService
+public class ProfileCommandService(IProfileRepository profileRepository, IUnitOfWork unitOfWork, ICloudinaryStorage cloudinaryStorage) : IProfileCommandService
 {
     public async Task Handle(CreateProfileCommand command)
     {
@@ -21,6 +24,16 @@ public class ProfileCommandService(IProfileRepository profileRepository, IUnitOf
             throw new BadHttpRequestException($"Profile with username {command.UserName} already exists.");
         }
         var profile = new Profile(command);
+        {
+            var imageUploadParams = new ImageUploadParams
+            {
+                File = new FileDescription(command.AvatarUrl.FileName, command.AvatarUrl.OpenReadStream()),
+                PublicId = $"{command.UserId}/profile/avatar/{command.AvatarUrl.FileName}"
+            };
+            await cloudinaryStorage.UploadImage(imageUploadParams);
+            var url = await cloudinaryStorage.GetImage($"{command.UserId}/profile/avatar/{command.AvatarUrl.FileName}");
+            profile.AvatarUrl = url ?? string.Empty;
+        }
         await profileRepository.AddAsync(profile);
         await unitOfWork.CompleteAsync();
     }

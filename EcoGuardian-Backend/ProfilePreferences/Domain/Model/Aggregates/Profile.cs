@@ -14,7 +14,7 @@ public class Profile
     
     public string Address { get; private set; }
     
-    public string AvatarUrl { get; private set; }
+    public string AvatarUrl { get; set; }
     
     public int UserId { get; private set; }
     
@@ -39,7 +39,7 @@ public class Profile
         this.Address = command.Address;
         this.UserId = command.UserId;
         this.SubscriptionId = command.SubscriptionId;
-        this.AvatarUrl = command.AvatarUrl;
+        this.AvatarUrl = string.Empty;
     }
 
     public void Update(UpdateProfileCommand command)
