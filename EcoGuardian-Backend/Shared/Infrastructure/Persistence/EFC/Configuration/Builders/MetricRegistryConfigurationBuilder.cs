@@ -12,10 +12,16 @@ public class MetricRegistryConfigurationBuilder : IEntityTypeConfiguration<Metri
         builder.Property(x => x.Id).ValueGeneratedOnAdd();
         builder.Property(x => x.DeviceId).IsRequired();
         builder.Property(x => x.CreatedAt).IsRequired();
+        builder.Property(x => x.AggregationLevelId).IsRequired();
+        
         builder.HasMany(x => x.Metrics)
             .WithOne(m => m.MetricRegistry)
             .HasForeignKey(m => m.MetricRegistryId)
             .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasOne(x => x.AggregationLevel)
+            .WithMany()
+            .HasForeignKey(x => x.AggregationLevelId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }
-

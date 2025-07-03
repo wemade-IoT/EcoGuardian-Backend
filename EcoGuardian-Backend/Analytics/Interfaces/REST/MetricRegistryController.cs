@@ -28,12 +28,19 @@ public class MetricRegistryController(IMetricRegistryCommandService metricRegist
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [AuthorizeFilter("Admin", "Domestic", "Business", "Specialist")]
-    public async Task<IActionResult> GetMetricRegistriesByDeviceId([FromQuery] int deviceId)
+    public async Task<IActionResult> GetMetricRegistriesByDeviceId([FromQuery] int deviceId, [FromQuery] string? period = null)
     {
-        var query = new GetMetricsRegistriesByDeviceIdQuery(deviceId);
-        var registries = await metricRegistryQueryService.Handle(query);
-        var resources = registries.Select(MetricRegistryResourceFromEntityAssembler.ToResourceFromEntity).ToList();
-        return Ok(resources);
+        if (string.IsNullOrEmpty(period))
+        {
+            var query = new GetMetricsRegistriesByDeviceIdQuery(deviceId);
+            var registries = await metricRegistryQueryService.Handle(query);
+            var resources = registries.Select(MetricRegistryResourceFromEntityAssembler.ToResourceFromEntity).ToList();
+            return Ok(resources);
+        }
+        var periodQuery = new GetMetricRegistriesByPeriodQuery(deviceId, period);
+        var aggregated = await metricRegistryQueryService.Handle(periodQuery);
+        var aggregatedResources = aggregated.Select(MetricRegistryResourceFromEntityAssembler.ToResourceFromEntity).ToList();
+        return Ok(aggregatedResources);
     }
 
     [HttpGet("devices/{deviceId}/latest")]
