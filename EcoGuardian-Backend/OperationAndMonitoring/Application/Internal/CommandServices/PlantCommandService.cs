@@ -25,8 +25,10 @@ public class PlantCommandService(IPlantRepository plantRepository, IExternalUser
             {
                 File = new FileDescription(command.Image.FileName, command.Image.OpenReadStream()),
                 PublicId = $"{command.UserId}/{command.Name}",
-                Transformation = new Transformation().Width(500).Height(500).Crop("fill")
-            };
+                Transformation = new Transformation().Width(500).Height(500).Crop("fill").Quality("auto"),
+                Overwrite = true,
+                AllowedFormats = ["jpg", "png", "gif", "webp"],
+           };
 
             await cloudinaryStorage.UploadImage(imageUploadParams);
             var url = await cloudinaryStorage.GetImage($"{command.UserId}/{command.Name}");

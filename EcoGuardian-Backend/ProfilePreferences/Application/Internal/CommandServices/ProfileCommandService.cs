@@ -28,7 +28,9 @@ public class ProfileCommandService(IProfileRepository profileRepository, IUnitOf
             var imageUploadParams = new ImageUploadParams
             {
                 File = new FileDescription(command.AvatarUrl.FileName, command.AvatarUrl.OpenReadStream()),
-                PublicId = $"{command.UserId}/profile/avatar/{command.AvatarUrl.FileName}"
+                PublicId = $"{command.UserId}/profile/avatar/{command.AvatarUrl.FileName}",
+                Overwrite = true,
+                AllowedFormats = ["jpg", "png", "gif", "webp"],
             };
             await cloudinaryStorage.UploadImage(imageUploadParams);
             var url = await cloudinaryStorage.GetImage($"{command.UserId}/profile/avatar/{command.AvatarUrl.FileName}");

@@ -36,7 +36,9 @@ public class QuestionCommandService(IQuestionRepository questionRepository, IUni
                 var uploadParams = new ImageUploadParams
                 {
                     File = new FileDescription(image.FileName, image.OpenReadStream()),
-                    PublicId = publicId
+                    PublicId = publicId,
+                    Overwrite = true,
+                    AllowedFormats = ["jpg", "png", "gif", "webp"],
                 };
                 await cloudinaryStorage.UploadImage(uploadParams);
                 var result = await cloudinaryStorage.GetImage(publicId);
