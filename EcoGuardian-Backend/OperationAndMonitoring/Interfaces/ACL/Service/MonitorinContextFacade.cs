@@ -22,4 +22,15 @@ public class MonitorinContextFacade(IPlantCommandService plantCommandService, IP
         var command = new UpdatePlantStateCommand(stateId, plantId);
         plantCommandService.Handle(command);
     }
+
+    public async Task<int> GetUserIdByPlantIdAsync(int plantId)
+    {
+        var query = new GetPlantByIdQuery(plantId);
+        var plant = await plantQueryService.Handle(query);
+        if (plant == null)
+        {
+            throw new KeyNotFoundException($"Plant with ID {plantId} not found.");
+        }
+        return plant.UserId;
+    }
 }
