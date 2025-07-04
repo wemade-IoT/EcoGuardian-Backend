@@ -8,7 +8,7 @@ public class Profile
     
     public string Name { get; private set; }
     
-    public string UserName { get; private set; }
+    public string LastName { get; private set; }
     
     public string Email { get; private set; }
     
@@ -23,7 +23,7 @@ public class Profile
     public Profile()
     {
         Name = string.Empty;
-        UserName = string.Empty;
+        LastName = string.Empty;
         Email = string.Empty;
         Address = string.Empty;
         UserId = 0;
@@ -34,7 +34,7 @@ public class Profile
     public Profile(CreateProfileCommand command)
     {
         this.Name = command.Name;
-        this.UserName = command.UserName;
+        this.LastName = command.LastName;
         this.Email = command.Email;
         this.Address = command.Address;
         this.UserId = command.UserId;

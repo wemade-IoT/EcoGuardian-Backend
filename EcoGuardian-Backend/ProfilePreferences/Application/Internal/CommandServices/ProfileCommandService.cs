@@ -19,9 +19,9 @@ public class ProfileCommandService(IProfileRepository profileRepository, IUnitOf
             throw new BadHttpRequestException($"Profile with email {command.Email} already exists.");
         }
 
-        if (profileRepository.IsUserNameExists(command.UserName))
+        if (profileRepository.IsUserNameExists(command. Name+ " " + command.LastName))
         {
-            throw new BadHttpRequestException($"Profile with username {command.UserName} already exists.");
+            throw new BadHttpRequestException($"Profile with username {command.Name} {command.LastName} already exists.");
         }
         var profile = new Profile(command);
         {
