@@ -22,8 +22,13 @@ public class PlantController(IPlantCommandService plantCommandService, IPlantQue
     public async Task<IActionResult> CreatePlant([FromForm] CreatePlantResource resource)
     {
         var command = CreatePlantCommandFromResourceAssembler.ToCommandFromResource(resource);
-        await plantCommandService.Handle(command);
-        return StatusCode(201, true);
+        var plant = await plantCommandService.Handle(command);
+
+        return StatusCode(201, new
+        {
+            message = "Planta creada exitosamente",
+            id = plant.Id
+        });
     }
 
     [HttpPut("{id:int}")]

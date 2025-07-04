@@ -12,7 +12,7 @@ namespace EcoGuardian_Backend.OperationAndMonitoring.Application.Internal.Comman
 
 public class PlantCommandService(IPlantRepository plantRepository, IExternalUserService externalUserService, IUnitOfWork unitOfWork, ICloudinaryStorage cloudinaryStorage) : IPlantCommandService
 {
-    public async Task Handle(CreatePlantCommand command)
+    public async Task<Plant> Handle(CreatePlantCommand command)
     {
         var userExists = await externalUserService.CheckUserExists(command.UserId);
         if (!userExists)
@@ -36,7 +36,8 @@ public class PlantCommandService(IPlantRepository plantRepository, IExternalUser
         }
         await plantRepository.AddAsync(plant);
         await unitOfWork.CompleteAsync();
-
+        
+        return plant;
     }
 
     public async Task Handle(UpdatePlantCommand command)
