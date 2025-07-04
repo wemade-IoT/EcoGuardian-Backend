@@ -120,6 +120,8 @@ public static class ApplicationDependencyContainer
         services.AddScoped<IResourceContextFacade, ResourceContextFacade>();
         services.AddScoped<IExternalResourceService, ExternalResourceService>();
         
+        services.AddScoped<IAggregationLevelCommandService, AggregationLevelCommandService>();
+        services.AddScoped<IAggregationLevelRepository, AggregationLevelRepository>();
         // Register other application services as needed
         /*services.AddScoped<IExternalCustomerService, ExternalCustomerService>();*/
 

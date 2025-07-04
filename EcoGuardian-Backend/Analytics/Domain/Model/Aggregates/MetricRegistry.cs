@@ -1,4 +1,7 @@
-﻿namespace EcoGuardian_Backend.Analytics.Domain.Model.Aggregates;
+﻿using EcoGuardian_Backend.Analytics.Domain.Model.Entities;
+using EcoGuardian_Backend.Analytics.Domain.Model.ValueObjects;
+
+namespace EcoGuardian_Backend.Analytics.Domain.Model.Aggregates;
 
 public class MetricRegistry
 {
@@ -6,13 +9,25 @@ public class MetricRegistry
     public int DeviceId { get; private set; }
     public DateTime CreatedAt { get; private set; }
     public ICollection<Metric> Metrics { get; private set; } = new List<Metric>();
+    public int AggregationLevelId { get; private set; }
+    
+    public AggregationLevel AggregationLevel { get; private set; }
+    
 
     public MetricRegistry(int deviceId)
     {
         DeviceId = deviceId;
         CreatedAt = DateTime.UtcNow;
+        AggregationLevelId = 0;
+    }
+
+    public MetricRegistry(int deviceId, DateTime createdAt, ICollection<Metric> metrics, int aggregationLevelId)
+    {
+        DeviceId = deviceId;
+        CreatedAt = createdAt;
+        Metrics = metrics;
+        AggregationLevelId = aggregationLevelId;
     }
 
     private MetricRegistry() { }
 }
-
