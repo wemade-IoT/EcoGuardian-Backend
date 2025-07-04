@@ -24,18 +24,6 @@ public class ProfileCommandService(IProfileRepository profileRepository, IUnitOf
             throw new BadHttpRequestException($"Profile with username {command.Name} {command.LastName} already exists.");
         }
         var profile = new Profile(command);
-        {
-            var imageUploadParams = new ImageUploadParams
-            {
-                File = new FileDescription(command.AvatarUrl.FileName, command.AvatarUrl.OpenReadStream()),
-                PublicId = $"{command.UserId}/profile/avatar/{command.AvatarUrl.FileName}",
-                Overwrite = true,
-                AllowedFormats = ["jpg", "png", "gif", "webp"],
-            };
-            await cloudinaryStorage.UploadImage(imageUploadParams);
-            var url = await cloudinaryStorage.GetImage($"{command.UserId}/profile/avatar/{command.AvatarUrl.FileName}");
-            profile.AvatarUrl = url ?? string.Empty;
-        }
         await profileRepository.AddAsync(profile);
         await unitOfWork.CompleteAsync();
     }
@@ -46,6 +34,23 @@ public class ProfileCommandService(IProfileRepository profileRepository, IUnitOf
         if (profile == null)
         {
             throw new BadHttpRequestException($"Profile with ID {command.Id} not found.");
+        }
+
+        //Update the avatar considering it should be a file, in case it exists
+        if (command.AvatarUrl != null)
+        {
+       
+        var imageUploadParams = new ImageUploadParams
+            {
+                File = new FileDescription(command.AvatarUrl.FileName, command.AvatarUrl.OpenReadStream()),
+                PublicId = $"{profile.UserId}/profile/avatar/{command.AvatarUrl.FileName}",
+                Overwrite = true,
+                AllowedFormats = ["jpg", "png", "gif", "webp"],
+            };
+            await cloudinaryStorage.UploadImage(imageUploadParams);
+
+        var url = await cloudinaryStorage.GetImage($"{profile.UserId}/profile/avatar/{command.AvatarUrl.FileName}");
+        profile.upateImage(url ?? "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png");
         }
         profile.Update(command);
         profileRepository.Update(profile);

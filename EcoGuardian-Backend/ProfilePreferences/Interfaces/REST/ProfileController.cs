@@ -13,10 +13,9 @@ using Microsoft.AspNetCore.Mvc;
 public class ProfileController(IProfileCommandService profileCommandService, IProfileQueryService profileQueryService) : ControllerBase
 {
     [HttpPost]
-    [Consumes("multipart/form-data")]
     [AuthorizeFilter("Admin", "Domestic", "Business")]
     [ProducesResponseType(201)]
-    public async Task<IActionResult> CreateProfile([FromForm] CreateProfileResource resource)
+    public async Task<IActionResult> CreateProfile([FromBody] CreateProfileResource resource)
     {
         var command = CreateProfileCommandFromResourceAssembler.ToCommandFromResource(resource);
         await profileCommandService.Handle(command);
@@ -26,7 +25,7 @@ public class ProfileController(IProfileCommandService profileCommandService, IPr
     [HttpPut("{id:int}")]
     [AuthorizeFilter("Admin", "Domestic", "Business")]
     [ProducesResponseType(200)]
-    public async Task<IActionResult> UpdateProfile([FromBody] UpdateProfileResource resource, [FromRoute] int id)
+    public async Task<IActionResult> UpdateProfile([FromForm] UpdateProfileResource resource, [FromRoute] int id)
     {
         var command = UpdateProfileCommandFromResourceAssembler.ToCommandFromResource(id, resource);
         await profileCommandService.Handle(command);
