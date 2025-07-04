@@ -23,6 +23,9 @@ public class MetricRegistryCommandService(IExternalResourceService externalResou
             { 4, "Changed Water Consumption" }
         };
         var userId = await externalResourceService.GetUserIdByDeviceIdAsync(command.DeviceId);
+
+        Console.WriteLine($" =============== User ID: {userId} ===================");
+
         var metricRegistry = new MetricRegistry(command.DeviceId);
         foreach (var metricCmd in command.Metrics)
         {
@@ -34,7 +37,7 @@ public class MetricRegistryCommandService(IExternalResourceService externalResou
         {
             if (types.TryGetValue(metricCmd.MetricTypesId, out var typeName))
             {
-                await notificationService.CreateNotification(typeName, "A new status has been recorded for your plant", userId);
+                await notificationService.CreateNotification(typeName, "A new status has been recorded for your plant, USER:", userId);
             }
         }
         await unitOfWork.CompleteAsync();
