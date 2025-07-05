@@ -3,6 +3,7 @@ using EcoGuardian_Backend.OperationAndMonitoring.Application.Internal.CommandSer
 using EcoGuardian_Backend.OperationAndMonitoring.Application.Internal.OutboundServices;
 using EcoGuardian_Backend.OperationAndMonitoring.Domain.Model.Aggregates;
 using EcoGuardian_Backend.OperationAndMonitoring.Domain.Model.Commands;
+using EcoGuardian_Backend.OperationAndMonitoring.Domain.Model.Queries;
 using EcoGuardian_Backend.OperationAndMonitoring.Domain.Repositories;
 using EcoGuardian_Backend.OperationAndMonitoring.Domain.Services;
 using EcoGuardian_Backend.Shared.Application.Internal.CloudinaryStorage;
@@ -82,6 +83,19 @@ public class Tests
         return plantCommandServiceMock.Object.Handle(command)
             .ContinueWith(t => Assert.That(t.Exception, Is.Null));
     }
+    
+    [Test]
+    public Task Get_Plants_By_User_Id_Must_To_Be_Working()
+    {
+        var plantQueryServiceMock = new Mock<IPlantQueryService>();
+        var query = new GetPlantsByUserIdQuery(1);
+        
+        return plantQueryServiceMock
+            .Object.Handle(query).
+            ContinueWith(
+                task => Assert.That(task.Result, Is.Not.Null));  
+    }
+    
     
     
     [Test]
